@@ -1,3 +1,12 @@
-.heading{
-    color: red !important;
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.footer_logo img {
+    margin: auto 0;
+    display: block;
+    border-radius: 50%;
 }

@@ -9,6 +9,8 @@
     <body>
         <div class="container">
             <div id="navbar"></div>
+            <div id="imageSlider"></div>
+            <div id="productGrid"></div>
             <div id="footer"></div>
         </div>
  
@@ -17,7 +19,9 @@
         const cssFile = [
             "/navbar.css",
             "/footer.css",
-            "/main.css"
+            "/main.css",
+            "/imageSlider.css",
+            "/productGrid.css",
         ];
         cssFile.forEach(file => {
             const link = document.createElement("link");
@@ -31,7 +35,8 @@
         const jsFile = [
             "/navbar.js",
             "/footer.js",
-            "/main.js"
+            "/main.js",
+            "/productGrid.js",
         ];
         jsFile.forEach(file => {
             const script = document.createElement("script");

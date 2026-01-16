@@ -1,0 +1,234 @@
+[
+    {
+        "id": 1,
+        "product_name": "Kurtha set",
+        "product_cat": [
+            {
+                "id": 1,
+                "category_name": "kurtha",
+                "created_at": "2026-01-13",
+                "updated_on": "0000-00-00"
+            }
+        ],
+        "product_image": "https://picsum.photos/id/242/200/300",
+        "product_price": 2500.0,
+        "discount": 10,
+        "stock": 15,
+        "clothes_type": "velvet",
+        "color_verient": [
+            {
+                "id": 1,
+                "color": "red",
+                "image": "images/rklogo.jpeg"
+            },
+            {
+                "id": 2,
+                "color": "green",
+                "image": "images/rklogo.jpeg"
+            },
+            {
+                "id": 3,
+                "color": "orange",
+                "image": "images/rklogo.jpeg"
+            },
+            {
+                "id": 4,
+                "color": "blue",
+                "image": "images/rklogo.jpeg"
+            }
+        ],
+        "created_at": "2026-01-13",
+        "updated_on": "0000-00-00"
+    },
+    {
+        "id": 2,
+        "product_name": "Anarkali Gown",
+        "product_cat": [
+            {
+                "id": 2,
+                "category_name": "anarkali",
+                "created_at": "2026-01-13",
+                "updated_on": "0000-00-00"
+            }
+        ],
+        "product_image": "https://picsum.photos/id/237/200/300",
+        "product_price": 4200.0,
+        "discount": 15,
+        "stock": 10,
+        "clothes_type": "silk",
+        "color_verient": [
+            {
+                "id": 1,
+                "color": "maroon",
+                "image": "images/anarkali-maroon.jpg"
+            },
+            {
+                "id": 2,
+                "color": "gold",
+                "image": "images/anarkali-gold.jpg"
+            }
+        ],
+        "created_at": "2026-01-13",
+        "updated_on": "0000-00-00"
+    },
+    {
+        "id": 3,
+        "product_name": "Saree with Blouse",
+        "product_cat": [
+            {
+                "id": 3,
+                "category_name": "saree",
+                "created_at": "2026-01-13",
+                "updated_on": "0000-00-00"
+            }
+        ],
+        "product_image": "https://picsum.photos/id/247/200/300",
+        "product_price": 5500.0,
+        "discount": 20,
+        "stock": 8,
+        "clothes_type": "chiffon",
+        "color_verient": [
+            {
+                "id": 1,
+                "color": "black",
+                "image": "images/saree-black.jpg"
+            },
+            {
+                "id": 2,
+                "color": "pink",
+                "image": "images/saree-pink.jpg"
+            }
+        ],
+        "created_at": "2026-01-13",
+        "updated_on": "0000-00-00"
+    },
+    {
+        "id": 4,
+        "product_name": "Lehenga Choli",
+        "product_cat": [
+            {
+                "id": 4,
+                "category_name": "lehenga",
+                "created_at": "2026-01-13",
+                "updated_on": "0000-00-00"
+            }
+        ],
+        "product_image": "https://picsum.photos/id/238/200/300",
+        "product_price": 7800.0,
+        "discount": 25,
+        "stock": 5,
+        "clothes_type": "net",
+        "color_verient": [
+            {
+                "id": 1,
+                "color": "red",
+                "image": "images/lehenga-red.jpg"
+            },
+            {
+                "id": 2,
+                "color": "peach",
+                "image": "images/lehenga-peach.jpg"
+            }
+        ],
+        "created_at": "2026-01-13",
+        "updated_on": "0000-00-00"
+    },
+    {
+        "id": 5,
+        "product_name": "Cotton Kurti",
+        "product_cat": [
+            {
+                "id": 5,
+                "category_name": "kurti",
+                "created_at": "2026-01-13",
+                "updated_on": "0000-00-00"
+            }
+        ],
+        "product_image": "https://picsum.photos/id/254/200/300",
+        "product_price": 1800.0,
+        "discount": 5,
+        "stock": 20,
+        "clothes_type": "cotton",
+        "color_verient": [
+            {
+                "id": 1,
+                "color": "white",
+                "image": "images/kurti-white.jpg"
+            },
+            {
+                "id": 2,
+                "color": "sky blue",
+                "image": "images/kurti-blue.jpg"
+            },
+            {
+                "id": 3,
+                "color": "yellow",
+                "image": "images/kurti-yellow.jpg"
+            }
+        ],
+        "created_at": "2026-01-13",
+        "updated_on": "0000-00-00"
+    },
+    {
+        "id": 6,
+        "product_name": "Party Wear Top",
+        "product_cat": [
+            {
+                "id": 6,
+                "category_name": "tops",
+                "created_at": "2026-01-13",
+                "updated_on": "0000-00-00"
+            }
+        ],
+        "product_image": "https://picsum.photos/id/232/200/300",
+        "product_price": 2200.0,
+        "discount": 12,
+        "stock": 18,
+        "clothes_type": "georgette",
+        "color_verient": [
+            {
+                "id": 1,
+                "color": "black",
+                "image": "images/top-black.jpg"
+            },
+            {
+                "id": 2,
+                "color": "wine",
+                "image": "images/top-wine.jpg"
+            }
+        ],
+        "created_at": "2026-01-13",
+        "updated_on": "0000-00-00"
+    },
+    {
+        "id": 7,
+        "product_name": "Party Wear Top",
+        "product_cat": [
+            {
+                "id": 6,
+                "category_name": "tops",
+                "created_at": "2026-01-13",
+                "updated_on": "0000-00-00"
+            }
+        ],
+        "product_image": "https://picsum.photos/id/232/200/300",
+        "product_price": 2200.0,
+        "discount": 12,
+        "stock": 18,
+        "clothes_type": "georgette",
+        "color_verient": [
+            {
+                "id": 1,
+                "color": "black",
+                "image": "images/top-black.jpg"
+            },
+            {
+                "id": 2,
+                "color": "wine",
+                "image": "images/top-wine.jpg"
+            }
+        ],
+        "created_at": "2026-01-13",
+        "updated_on": "0000-00-00"
+    }
+]

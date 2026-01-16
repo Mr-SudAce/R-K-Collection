@@ -7,17 +7,22 @@ favicon.href = "images/rklogo.jpeg";
 
 
 // content
-// common
-// navbar
-fetch('templates/common/navbar.html')
-    .then(r => r.text())
-    .then(html => {
-        document.getElementById('navbar').innerHTML = html;
-    });
+const file = [
+    // common
+    { files: "common/navbar.html", id: "navbar" },
+    { files: "common/footer.html", id: "footer" },
+    // template
+    { files: "ImageSlider.html", id: "imageSlider" },
+    { files: "productGrid.html", id: "productGrid" },
+]
 
-// footer
-fetch('templates/common/footer.html')
-    .then(r => r.text())
-    .then(html => {
-        document.getElementById('footer').innerHTML = html;
-    });
+// mapped the file so render the file
+file.forEach(items => {
+    fetch('templates/' + items.files)
+        .then(r => r.text())
+        .then(html => {
+            document.getElementById(items.id).innerHTML = html;
+        })
+        .catch(err => console.error("Error Loading", items.files, err));
+});
+
