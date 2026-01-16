@@ -7,9 +7,10 @@
 }
 
 /* ------------------ Product Card ------------------ */
-.cards {
+
+.cardbox {
     background: #fff;
-    border-radius: 18px;
+    border-radius: 10px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -17,6 +18,10 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     position: relative;
+}
+
+.cards {
+    width: 260px;
 }
 
 .cards:hover {
@@ -88,6 +93,36 @@
     text-transform: uppercase;
 }
 
+
+
+
+/* ------------------ catgeory filter ------------------ */
+
+.categoryFilter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px;
+    justify-content: center;
+}
+
+.categoryFilter button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 30px;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.categoryFilter button:hover,
+.categoryFilter button.active {
+    background: #e63946;
+}
+
+
+
 /* ------------------ Responsive Media Queries ------------------ */
 
 /* Tablets */
@@ -130,7 +165,3 @@
         font-size: 0.85rem;
     }
 }
-
-
-
-
