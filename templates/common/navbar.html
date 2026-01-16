@@ -1,20 +1,28 @@
-
-
-
 <nav class="navbar">
     <div class="logo">
-        <img src="/images/rklogo.jpeg" alt="" srcset="" width="50px" height="50px" >
+        <img src="/images/rklogo.jpeg" alt srcset width="50px" height="50px">
     </div>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#">Men</a></li>
-      <li><a href="#">Women</a></li>
-      <li><a href="#">New</a></li>
-      <li><a href="#">Sale</a></li>
-      <li><a href="#">Contact</a></li>
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Women</a></li>
+        <li><a href="#">New</a></li>
+        <li><a href="#">Sale</a></li>
+        <li><a href="#">Contact</a></li>
     </ul>
 
     <div class="menu-toggle" id="menuToggle">
-      ☰
+        ☰
     </div>
-  </nav>
+</nav>
+
+<script>
+// toggle menu for mobile view  
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+</script>

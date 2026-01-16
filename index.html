@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/webp" href="">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <title></title>
-</head>
-<body>
-    <div class="container">
-        <div id="navbar"></div>
-        <div id="footer"></div>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/webp" href>
+        <link rel="stylesheet" href="main.css">
+        <title></title>
+    </head>
+    <body>
+        <div class="container">
+            <div id="navbar"></div>
+            <div id="footer"></div>
+        </div>
+    </body>
 
-<script src="main.js"></script>
+    <script src="main.js"></script>
+    <script>
+    // load css
+    const cssFile = [
+        "/navbar.css",
+        "/footer.css"
+    ];
+    cssFile.forEach(file => {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "/css" + file;
+        document.head.appendChild(link);
+    });
+    
+
+    // load js
+    const jsFile = [
+        "/navbar.js",
+        "/footer.js"
+    ];
+    jsFile.forEach(file => {
+        const script = document.createElement("script");
+        script.src = "/js" + file;
+        document.body.appendChild(script);
+    });
+
+</script>
 </html>
