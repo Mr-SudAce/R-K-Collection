@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/webp" href>
-        <link rel="stylesheet" href="main.css">
+        <!-- <link rel="stylesheet" href="main.css"> -->
         <title></title>
     </head>
     <body>
@@ -19,7 +19,8 @@
     // load css
     const cssFile = [
         "/navbar.css",
-        "/footer.css"
+        "/footer.css",
+        "/main.css"
     ];
     cssFile.forEach(file => {
         const link = document.createElement("link");
@@ -32,7 +33,8 @@
     // load js
     const jsFile = [
         "/navbar.js",
-        "/footer.js"
+        "/footer.js",
+        "/main.js"
     ];
     jsFile.forEach(file => {
         const script = document.createElement("script");
