@@ -4,9 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/webp" href>
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/navbar.css">
-        <link rel="stylesheet" href="css/footer.css">
         <title></title>
     </head>
     <body>
@@ -14,10 +11,8 @@
             <div id="navbar"></div>
             <div id="footer"></div>
         </div>
-        <script src="js/main.js"></script>
-        <script src="js/footer.js"></script>
-        <script src="js/navbar.js"></script>
-        <!-- <script>
+ 
+        <script>
         // load css
         const cssFile = [
             "/navbar.css",
@@ -27,7 +22,7 @@
         cssFile.forEach(file => {
             const link = document.createElement("link");
             link.rel = "stylesheet";
-            link.href = "/css" + file;
+            link.href = "css" + file;
             document.head.appendChild(link);
         });
         
@@ -40,11 +35,11 @@
         ];
         jsFile.forEach(file => {
             const script = document.createElement("script");
-            script.src = "/js" + file;
+            script.src = "js" + file;
             document.body.appendChild(script);
         });
     
-    </script> -->
+    </script>
     </body>
 
 </html>
