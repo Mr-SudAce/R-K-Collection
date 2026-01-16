@@ -11,14 +11,20 @@
     --primary-color: #c73f45;
     --secondary-color: #f4f4f4;
     --text-color: #333;
+    --bg-color: #e0bcbc;
     --footer-color: #555;
     --navbar-color: #555;
+}
+
+body{
+    background-color: var(--bg-color);
+    line-height: 1.6;
 }
 
 /* main.html */
 .container {
     max-width: 100%;
-    width: 90%;
+    width: 95%;
     margin: auto;
 }
 
@@ -27,7 +33,6 @@
     background-color: var(--navbar-color);
     color: white;
     text-align: center;
-    padding: 1rem;
     position: sticky;
     top: 0;
 
