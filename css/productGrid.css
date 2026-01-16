@@ -1,14 +1,14 @@
 /* ------------------ Grid Container ------------------ */
+
 .gridProduct {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    justify-content: center;
-    gap: 15px;
-    padding: 10px 0;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows:auto;
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
 /* ------------------ Product Card ------------------ */
-
 .cardbox {
     background: #fff;
     border-radius: 10px;
@@ -19,15 +19,9 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     position: relative;
-    width: 260px;
-}
-
-.cards {
-    width: 250px;
 }
 
 .cards:hover {
-    /* transform: translateY(-8px); */
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
 }
 
@@ -41,46 +35,33 @@
 
 
 /* ------------------ Product Info ------------------ */
+
 .cards p {
-    /* margin: 6px 0; */
     padding: 0 16px;
-}
+    }
+    .product_title {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        font-weight: 600;
+        color: #111;
+        margin-top: 12px;
+    }
+    
+    .product_price {
+        font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        font-weight: 700;
+        color: #e63946;
+        margin-top: 4px;
+    }
+    
+    .product_detail {
+        font-size: clamp(0.75rem, 1vw, 0.9rem);
+        color: #777;
+        margin-bottom: 12px;
+    } 
 
-.product_title {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    font-weight: 600;
-    color: #111;
-    margin-top: 12px;
-}
 
-.product_price {
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-    font-weight: 700;
-    color: #e63946;
-    margin-top: 4px;
-}
 
-.product_detail {
-    font-size: clamp(0.75rem, 1vw, 0.9rem);
-    color: #777;
-}
 
-/* ------------------ Optional: Add to Cart Button ------------------ */
-.cards button {
-    margin: 12px;
-    padding: clamp(8px, 1vw, 12px);
-    border: none;
-    border-radius: 30px;
-    background: #111;
-    color: #fff;
-    font-size: clamp(0.8rem, 1vw, 1rem);
-    font-weight: 600;
-    transition: background 0.3s ease;
-}
-
-.cards button:hover {
-    background: #e63946;
-}
 
 /* ------------------ Discount Badge ------------------ */
 .discount_badge {
@@ -130,39 +111,62 @@
 
 /* Tablets */
 @media (max-width: 1024px) {
-    .cardbox{
+    /* .cardbox{
         width: 235px;
-    }
-    
-    .gridProduct {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    } */
+
+    /* .gridProduct {
+        grid-template-columns: repeat(5, 1fr);
         gap: 11px;
         justify-content: center;
+    } */
+
+    .gridProduct {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows:auto;
+        gap: 8px;
     }
+
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-    .cardbox{
+
+    /* .cardbox{
         width: 230px;
-    }
-    .gridProduct {
+    } */
+    /* .gridProduct {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         justify-content: center;
+    } */
+
+    .gridProduct {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows:auto;
+        gap: 8px;
     }
 }
 
 /* Small Mobile */
 @media (max-width: 480px) {
 
-    .cardbox{
+    /* .cardbox{
         width: 280px;
     }
-    
-    
-    .gridProduct {
+     */
+
+    /* .gridProduct {
         padding: 10px;
         gap: 10px;
+    } */
+
+    .gridProduct {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows:auto;
+        gap: 8px;
     }
 
     .product_title {

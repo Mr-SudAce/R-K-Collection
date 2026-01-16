@@ -354,5 +354,46 @@
         ],
         "created_at": "2026-01-13",
         "updated_on": "0000-00-00"
+    },
+    {
+        "id": 12,
+        "product_name": "Kurtha set",
+        "product_cat": [
+            {
+                "id": 1,
+                "category_name": "kurtha",
+                "created_at": "2026-01-13",
+                "updated_on": "0000-00-00"
+            }
+        ],
+        "product_image": "https://picsum.photos/id/242/200/300",
+        "product_price": 2500.0,
+        "discount": 10,
+        "stock": 15,
+        "clothes_type": "velvet",
+        "color_verient": [
+            {
+                "id": 1,
+                "color": "red",
+                "image": "images/rklogo.jpeg"
+            },
+            {
+                "id": 2,
+                "color": "green",
+                "image": "images/rklogo.jpeg"
+            },
+            {
+                "id": 3,
+                "color": "orange",
+                "image": "images/rklogo.jpeg"
+            },
+            {
+                "id": 4,
+                "color": "blue",
+                "image": "images/rklogo.jpeg"
+            }
+        ],
+        "created_at": "2026-01-13",
+        "updated_on": "0000-00-00"
     }
 ]
