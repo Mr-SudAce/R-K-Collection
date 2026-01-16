@@ -31,10 +31,9 @@ function renderProducts(products) {
         ${discountBadge}
         <img src="${item.product_image}" class="product_image" alt="${item.product_name}">
         <p class="product_title">${item.product_name}</p>
-        <p class="product_category">Category: ${categoryNames}</p>
+        <p class="product_category">${categoryNames}</p>
         <p class="product_price">Rs. ${item.product_price}</p>
         <p class="product_detail">${item.clothes_type}</p>
-        <button>Add to Cart</button>
         </div>
         `;
         grid.appendChild(card);
