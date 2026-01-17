@@ -2,17 +2,19 @@ let allProducts = [];
 
 // Fetch JSON
 fetch("json/product.json")
-  .then(res => res.json())
-  .then(products => {
-      allProducts = products;
-      
-      // 1. Generate category buttons dynamically
-      generateCategoryButtons(allProducts);
+    .then(res => res.json())
+    .then(products => {
+        allProducts = products;
 
-      // 2. Render all products by default
-      renderProducts(allProducts);
-  })
-  .catch(err => console.error("Error loading JSON:", err));
+        // 1. Generate category buttons dynamically
+        generateCategoryButtons(allProducts);
+
+        // 2. Render all products by default
+        renderProducts(allProducts);
+    })
+    .catch(err => {
+        console.log("JSON error:", err)
+    })
 
 // Render Products Function
 function renderProducts(products) {

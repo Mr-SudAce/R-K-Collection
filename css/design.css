@@ -1,0 +1,60 @@
+/* ---------- Parent Container ---------- */
+.design-parent {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    padding: 60px 0;
+}
+
+/* ---------- Image Card ---------- */
+.imgCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+}
+
+/* ---------- Image ---------- */
+.imgCard img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 14px;
+    object-fit: cover;
+    justify-self: center;
+}
+
+/* ---------- Description ---------- */
+.imgCard p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    text-align: justify;
+    color: #333;
+    max-width: 500px;
+}
+
+/* ---------- Alternating Layout ---------- */
+/* 2nd, 4th, 6th... → description first */
+.imgCard:nth-child(even) {
+    direction: rtl;
+}
+
+.imgCard:nth-child(even) p,
+.imgCard:nth-child(even) img {
+    direction: ltr;
+}
+
+/* ---------- Mobile Responsive ---------- */
+@media (max-width: 768px) {
+    .imgCard {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .imgCard:nth-child(even) {
+        direction: ltr;
+    }
+
+    .imgCard p {
+        margin: 0 auto;
+    }
+}

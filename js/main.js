@@ -14,6 +14,7 @@ const file = [
     // template
     { files: "ImageSlider.html", id: "imageSlider" },
     { files: "productGrid.html", id: "productGrid" },
+    { files: "design.html", id: "design" },
 ]
 
 // mapped the file so render the file
