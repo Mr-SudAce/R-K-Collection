@@ -1,5 +1,251 @@
-.slider_Image img{
+/* =========================
+   IMAGE SLIDER SECTION
+========================= */
+#imageSlider {
+    width: 100%;
+    background: linear-gradient(135deg, #c73f45 0%, #d9373c 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Slider Image */
+.slider_Image,
+.slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slider_Image img,
+.slide img {
     width: 100%;
     height: 500px;
-    margin: auto 0;
+    object-fit: cover;
+    display: block;
+}
+
+/* Slider Overlay */
+.slider-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    padding: 40px 20px;
+}
+
+.slider-overlay h1 {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slider-overlay p {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.slider-overlay .btn {
+    background-color: white;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.slider-overlay .btn:hover {
+    background-color: #f5f5f5;
+}
+
+/* =========================
+   SLIDER CONTROLS
+========================= */
+.slider-nav {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.slider-nav button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-nav button.active,
+.slider-nav button:hover {
+    background-color: white;
+    transform: scale(1.3);
+}
+
+/* Previous/Next Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn.prev {
+    left: 20px;
+}
+
+.slider-btn.next {
+    right: 20px;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 1024px) {
+    .slider_Image img,
+    .slide img {
+        height: 400px;
+    }
+
+    .slider-overlay h1 {
+        font-size: 2.5rem;
+    }
+
+    .slider-overlay p {
+        font-size: 1.1rem;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .slider-btn.prev {
+        left: 15px;
+    }
+
+    .slider-btn.next {
+        right: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    #imageSlider {
+        min-height: 350px;
+    }
+
+    .slider_Image img,
+    .slide img {
+        height: 350px;
+    }
+
+    .slider-overlay {
+        padding: 30px 15px;
+    }
+
+    .slider-overlay h1 {
+        font-size: 1.8rem;
+    }
+
+    .slider-overlay p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    .slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .slider-nav {
+        bottom: 20px;
+        gap: 8px;
+    }
+
+    .slider-nav button {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #imageSlider {
+        min-height: 250px;
+    }
+
+    .slider_Image img,
+    .slide img {
+        height: 250px;
+    }
+
+    .slider-overlay h1 {
+        font-size: 1.3rem;
+    }
+
+    .slider-overlay p {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+
+    .slider-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .slider-btn.prev {
+        left: 10px;
+    }
+
+    .slider-btn.next {
+        right: 10px;
+    }
 }

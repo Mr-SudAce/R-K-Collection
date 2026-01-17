@@ -2,6 +2,7 @@
     {
         "id": 1,
         "product_name": "Kurtha set",
+        "season": "spring",
         "product_cat": [
             {
                 "id": 1,
@@ -10,7 +11,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/242/200/300",
+        "product_image": "https://picsum.photos/id/242/1080",
         "product_price": 2500.0,
         "product_desc":"here description",
         "discount": 10,
@@ -44,6 +45,7 @@
     {
         "id": 2,
         "product_name": "Anarkali Gown",
+        "season": "summer",
         "product_cat": [
             {
                 "id": 2,
@@ -52,7 +54,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/237/200/300",
+        "product_image": "https://picsum.photos/id/237/1080",
         "product_price": 4200.0,
         "product_desc":"here description",
         "discount": 15,
@@ -76,6 +78,7 @@
     {
         "id": 3,
         "product_name": "Saree with Blouse",
+        "season": "autumn",
         "product_cat": [
             {
                 "id": 3,
@@ -84,7 +87,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/247/200/300",
+        "product_image": "https://picsum.photos/id/247/1080",
         "product_price": 5500.0,
         "product_desc":"here description",
         "discount": 20,
@@ -116,7 +119,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/238/200/300",
+        "product_image": "https://picsum.photos/id/238/1080",
         "product_price": 7800.0,
         "product_desc":"here description",
         "discount": 25,
@@ -148,7 +151,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/254/200/300",
+        "product_image": "https://picsum.photos/id/254/1080",
         "product_price": 1800.0,
         "product_desc":"here description",
         "discount": 5,
@@ -185,7 +188,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/232/200/300",
+        "product_image": "https://picsum.photos/id/232/1080",
         "product_price": 2200.0,
         "product_desc":"here description",
         "discount": 12,
@@ -217,7 +220,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/232/200/300",
+        "product_image": "https://picsum.photos/id/232/1080",
         "product_price": 2200.0,
         "product_desc":"here description",
         "discount": 12,
@@ -249,7 +252,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/232/200/300",
+        "product_image": "https://picsum.photos/id/232/1080",
         "product_price": 2200.0,
         "product_desc":"here description",
         "discount": 12,
@@ -281,7 +284,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/232/200/300",
+        "product_image": "https://picsum.photos/id/232/1080",
         "product_price": 2200.0,
         "product_desc":"here description",
         "discount": 12,
@@ -313,7 +316,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/232/200/300",
+        "product_image": "https://picsum.photos/id/232/1080",
         "product_price": 2200.0,
         "product_desc":"here description",
         "discount": 12,
@@ -345,7 +348,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/232/200/300",
+        "product_image": "https://picsum.photos/id/232/1080",
         "product_price": 2200.0,
         "product_desc":"here description",
         "discount": 12,
@@ -377,7 +380,7 @@
                 "updated_on": "0000-00-00"
             }
         ],
-        "product_image": "https://picsum.photos/id/242/200/300",
+        "product_image": "https://picsum.photos/id/242/1080",
         "product_price": 2500.0,
         "product_desc":"here description",
         "discount": 10,

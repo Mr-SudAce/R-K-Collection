@@ -1,44 +1,14 @@
 <nav class="navbar">
-    <div class="logo">
-        <img src="images/rklogo.jpeg" alt="RK Logo" width="50" height="50">
-    </div>
-
+    <a href="#" class="navbar-logo">R & K</a>
+    
     <ul class="nav-links" id="navLinks">
-        <!-- <li class="dropdown">
-            <a href="#">Women ▾</a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Dresses</a></li>
-            </ul>
-        </li> -->
-
-        <li><a href="#">New</a></li>
-        <li><a href="#">Sale</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#collection-page">Collection</a></li>
+        <li><a href="#blog-section">Blog</a></li>
+        <li><a href="#children-section">Children</a></li>
+        <li><a href="#lookbooks-section">Lookbooks</a></li>
+        <li><a href="#about-section">About Us</a></li>
+        <li><a href="#contact-section">Contact</a></li>
     </ul>
 
-    <div class="menu-toggle" id="menuToggle">☰</div>
+    <button class="menu-toggle" id="menuToggle">☰</button>
 </nav>
-
-<script>
-// toggle menu for mobile view 
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    const dropdowns = document.querySelectorAll(".dropdown");
-    // menu toggle click event
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      
-    });
-
-
-
-    // dropdown functionality for mobile view
-    dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('click', (e) => {
-            if(window.innerWidth <= 768){
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-            }
-        });
-    });
-</script>

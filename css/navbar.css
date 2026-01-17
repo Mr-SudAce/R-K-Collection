@@ -1,19 +1,22 @@
 /* =========================
-   NAVBAR
+   NAVBAR STYLES
 ========================= */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 30px;
-    background: var(--secondary-color);
+    padding: 18px 40px;
+    background: var(--navbar-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     position: relative;
 }
 
-/* LOGO */
-.logo img {
-    display: block;
-    border-radius: 50%;
+.navbar-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    letter-spacing: 1px;
 }
 
 /* =========================
@@ -22,57 +25,83 @@
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: 35px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
     position: relative;
     list-style: none;
-    text-align: start;
-    width: auto;
 }
 
 .nav-links li a {
     text-decoration: none;
-    color: #000;
-    font-size: 15px;
-    padding: 8px 10px;
-    transition: color 0.3s;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
 }
 
 .nav-links li a:hover {
     color: var(--primary-color);
 }
 
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
 /* =========================
    DROPDOWN
 ========================= */
+.dropdown {
+    position: relative;
+}
+
 .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: 120%;
     left: 0;
     background: white;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border: 2px solid var(--primary-color);
-    max-width: 150px;
-    min-width: 100px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    min-width: 180px;
     display: none;
     flex-direction: column;
-    border-radius: 6px;
     z-index: 100;
+    overflow: hidden;
+}
+
+.dropdown-menu li {
+    list-style: none;
+    margin: 0;
 }
 
 .dropdown-menu li a {
     color: var(--text-color);
-    padding: 10px 15px;
+    padding: 12px 18px;
     display: block;
-    white-space: normal;
-    word-wrap: break-word;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
 }
 
 .dropdown-menu li a:hover {
-    background: gray;
-
+    background-color: var(--light-gray);
+    color: var(--primary-color);
 }
 
 /* Desktop hover */
@@ -81,42 +110,73 @@
 }
 
 /* =========================
-   HAMBURGER
+   HAMBURGER MENU
 ========================= */
 .menu-toggle {
     display: none;
-    font-size: 26px;
+    font-size: 28px;
     cursor: pointer;
+    color: var(--text-color);
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: var(--primary-color);
 }
 
 /* =========================
-   MOBILE VIEW
+   MOBILE RESPONSIVE
 ========================= */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
 
     .menu-toggle {
         display: block;
     }
 
     .nav-links {
-        position: absolute;
-        top: 65px;
+        position: fixed;
+        top: 70px;
         left: 0;
         width: 100%;
-        background: #111;
+        height: calc(100vh - 70px);
+        background: var(--navbar-color);
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        padding: 30px 20px;
+        gap: 20px;
         display: none;
-        padding: 20px 0;
-        gap: 15px;
+        z-index: 999;
+        overflow-y: auto;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
 
     .nav-links.active {
         display: flex;
     }
 
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 15px;
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
     .nav-links li a {
-        color: #fff;
+        font-size: 1.1rem;
+        width: 100%;
+    }
+
+    .nav-links li a::after {
+        display: none;
     }
 
     /* Dropdown for mobile */
@@ -124,11 +184,16 @@
         position: static;
         display: none;
         width: 100%;
-        background: #000;
-        border-radius: 0;
+        background: var(--light-gray);
+        box-shadow: none;
+        margin-top: 10px;
     }
 
     .dropdown.active .dropdown-menu {
         display: flex;
+    }
+
+    .dropdown-menu li a {
+        padding: 10px 0 10px 30px;
     }
 }

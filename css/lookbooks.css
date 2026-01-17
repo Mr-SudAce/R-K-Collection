@@ -1,0 +1,231 @@
+/* =========================
+   LOOKBOOKS PAGE STYLES
+========================= */
+
+/* PAGE HERO */
+.page-hero {
+    background: linear-gradient(135deg, #c73f45 0%, #d9373c 100%);
+    color: white;
+    padding: 120px 40px;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* SECTION INTRO */
+.section-intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-intro h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.section-intro p {
+    font-size: 1.05rem;
+    color: #666;
+}
+
+/* LOOKBOOKS SECTION */
+.lookbooks-section {
+    padding: 80px 40px;
+    background-color: var(--bg-color);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.lookbooks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.lookbook-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 450px;
+}
+
+.lookbook-image-wrapper {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.lookbook-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+}
+
+.lookbook-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.lookbook-card:hover img {
+    transform: scale(1.05);
+}
+
+.lookbook-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lookbook-card:hover .lookbook-overlay {
+    opacity: 1;
+}
+
+.btn-view {
+    background-color: white;
+    color: var(--primary-color);
+    padding: 12px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-view:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.05);
+}
+
+.lookbook-info {
+    background: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.lookbook-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.lookbook-info p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .page-hero {
+        padding: 60px 30px;
+        min-height: 250px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .lookbooks-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 40px 20px;
+        min-height: 200px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .lookbooks-section {
+        padding: 50px 20px;
+    }
+
+    .lookbooks-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .lookbook-card {
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-hero {
+        padding: 30px 15px;
+        min-height: auto;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .lookbooks-section {
+        padding: 30px 15px;
+    }
+
+    .lookbooks-grid {
+        gap: 15px;
+    }
+
+    .lookbook-card {
+        height: 250px;
+    }
+
+    .btn-view {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .lookbook-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .lookbook-info p {
+        font-size: 0.85rem;
+    }
+
+    .section-intro h2 {
+        font-size: 1.5rem;
+    }
+}

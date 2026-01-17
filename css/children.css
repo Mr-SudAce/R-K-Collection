@@ -1,0 +1,217 @@
+/* =========================
+   CHILDREN PAGE STYLES
+========================= */
+
+/* PAGE HERO */
+.page-hero {
+    background: linear-gradient(135deg, #c73f45 0%, #d9373c 100%);
+    color: white;
+    padding: 80px 40px;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* SECTION INTRO */
+.section-intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-intro h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.section-intro p {
+    font-size: 1.05rem;
+    color: #666;
+}
+
+/* KIDS SECTION */
+.kids-section {
+    padding: 80px 40px;
+    background-color: white;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: var(--light-gray);
+    padding: 40px 30px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    background: white;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--primary-color);
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* KIDS SHOWCASE */
+.kids-showcase {
+    padding: 60px 40px;
+    background-color: var(--bg-color);
+    max-width: 1400px;
+    margin: 80px auto 0;
+}
+
+.kids-showcase h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: var(--text-color);
+}
+
+.kids-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.kids-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.kids-item:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .page-hero {
+        padding: 60px 30px;
+        min-height: 250px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .features-grid,
+    .kids-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 40px 20px;
+        min-height: 200px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .kids-section,
+    .kids-showcase {
+        padding: 50px 20px;
+    }
+
+    .features-grid,
+    .kids-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .kids-item img {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-hero {
+        padding: 30px 15px;
+        min-height: auto;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .kids-section,
+    .kids-showcase {
+        padding: 30px 15px;
+    }
+
+    .kids-showcase {
+        margin-top: 50px;
+    }
+
+    .features-grid,
+    .kids-grid {
+        gap: 15px;
+    }
+
+    .feature-card {
+        padding: 25px 20px;
+    }
+
+    .kids-item img {
+        height: 200px;
+    }
+
+    .section-intro h2 {
+        font-size: 1.5rem;
+    }
+
+    .kids-showcase h2 {
+        font-size: 1.5rem;
+    }
+}

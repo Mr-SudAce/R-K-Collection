@@ -1,6 +1,6 @@
 let allPicture = [];
 
-fetch("json/design.json")
+fetch("json/product.json")
     .then(r => r.json())
     .then(picture => {
         allPicture = picture;
@@ -16,13 +16,14 @@ function pictureRender(allPicture) {
 
     parent.innerHTML = "";
 
-    allPicture.forEach(images => {
+    allPicture.slice(-3).forEach(images => {
         const imageCard = document.createElement("div");
         imageCard.classList.add("imgCard");
 
         imageCard.innerHTML = `
-        <img src="${images.pictureUrl}" alt="img">
-        <p>${images.description}</p>
+        <p class="design_title">${images.product_name}</p>
+        <img src="${images.product_image}" alt="img">
+        <p>${images.product_desc}</p>
         `;
 
         parent.appendChild(imageCard);

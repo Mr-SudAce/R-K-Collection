@@ -1,2 +1,34 @@
-<div id="categoryFilter" class="categoryFilter"></div>
-<div class="gridProduct" id="gridProduct"></div>
+<div class="product-section-wrapper">
+    <div class="product-filters">
+        <h2>Filters</h2>
+        
+        <div class="filter-group">
+            <h3>Category</h3>
+            <div id="categoryFilter" class="categoryFilter"></div>
+        </div>
+
+        <div class="filter-group">
+            <h3>Price Range</h3>
+            <div class="price-range-container">
+                <input type="range" id="priceRange" min="0" max="10000" value="10000" class="price-slider">
+                <p>₹0 - ₹<span id="priceValue">10000</span></p>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <h3>Color</h3>
+            <div id="colorFilter" class="color-filter"></div>
+        </div>
+
+        <div class="filter-group">
+            <h3>Season</h3>
+            <div id="seasonFilter" class="season-filter"></div>
+        </div>
+
+        <button id="resetFilters" class="btn-reset">Reset Filters</button>
+    </div>
+
+    <div class="products-container">
+        <div class="gridProduct" id="gridProduct"></div>
+    </div>
+</div>
