@@ -1,0 +1,71 @@
+{
+  "page_title": "Contact Us",
+  "hero_section": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you. Get in touch with us today!"
+  },
+  "contact_section": {
+    "main_heading": "Get In Touch",
+    "intro_text": "Have questions or feedback? Reach out to us through any of these channels.",
+    "contact_info": [
+      {
+        "id": 1,
+        "type": "address",
+        "icon": "📍",
+        "title": "Address",
+        "details": "Mandikhatar, Kathmandu",
+        "details_line2": "Nepal"
+      },
+      {
+        "id": 2,
+        "type": "phone",
+        "icon": "📞",
+        "title": "Phone",
+        "value": "+977 9876543210",
+        "link": "tel:+977-9876543210"
+      },
+      {
+        "id": 3,
+        "type": "email",
+        "icon": "✉️",
+        "title": "Email",
+        "value": "info@rkcollection.com",
+        "link": "mailto:info@rkcollection.com"
+      },
+      {
+        "id": 4,
+        "type": "hours",
+        "icon": "🕐",
+        "title": "Business Hours",
+        "hours": [
+          "Monday - Friday: 9 AM - 6 PM",
+          "Saturday: 10 AM - 4 PM",
+          "Sunday: Closed"
+        ]
+      }
+    ]
+  },
+  "social_section": {
+    "heading": "Follow Us",
+    "social_links": [
+      {
+        "id": 1,
+        "name": "Facebook",
+        "url": "#",
+        "icon": "facebook"
+      },
+      {
+        "id": 2,
+        "name": "Instagram",
+        "url": "#",
+        "icon": "instagram"
+      },
+      {
+        "id": 3,
+        "name": "Twitter",
+        "url": "#",
+        "icon": "twitter"
+      }
+    ]
+  }
+}

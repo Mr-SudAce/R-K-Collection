@@ -94,6 +94,9 @@ function renderProducts(products) {
 // Generate Category Buttons Dynamically
 function generateCategoryButtons(products) {
     const categoryContainer = document.getElementById("categoryFilter");
+
+    if (!categoryContainer) return;
+
     categoryContainer.innerHTML = "";
 
     // Get unique categories
@@ -249,7 +252,7 @@ function setupEventListeners() {
             };
             if (priceSlider) priceSlider.value = 10000;
             if (priceValue) priceValue.textContent = 10000;
-            
+
             // Reset category buttons
             const categoryButtons = document.querySelectorAll("#categoryFilter button");
             categoryButtons.forEach(btn => btn.classList.remove("active"));

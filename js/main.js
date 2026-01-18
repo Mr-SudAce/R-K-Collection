@@ -20,7 +20,6 @@ const file = [
     { files: "common/footer.html", id: "footer" },
     { files: "common/header.html", id: "header" },
     // template
-    { files: "ImageSlider.html", id: "imageSlider" },
     { files: "productGrid.html", id: "productGrid" },
     { files: "design.html", id: "design" },
     { files: "collection.html", id: "collection-page", css: "collection.css" },
@@ -41,8 +40,13 @@ file.forEach(items => {
     fetch('templates/' + items.files)
         .then(r => r.text())
         .then(html => {
-            document.getElementById(items.id).innerHTML = html;
+            const element = document.getElementById(items.id);
+            if (element) {
+                element.innerHTML = html;
+            } else {
+                console.warn(`Element with id '${items.id}' not found`);
+            }
         })
-        .catch(err => console.error("Error Loading", items.files, err));
+        .catch(err => {console.log("Error Loading", err)});
 });
 

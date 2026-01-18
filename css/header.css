@@ -38,7 +38,10 @@
 
 /* Logo styling */
 .logo {
+    position: absolute;
+    left: 0;
     flex-shrink: 0;
+
 }
 
 .logo-img {

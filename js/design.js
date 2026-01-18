@@ -3,9 +3,7 @@ let allPicture = [];
 fetch("json/product.json")
     .then(r => r.json())
     .then(picture => {
-        allPicture = picture;
-        console.log("JSON loaded:", allPicture);
-        pictureRender(allPicture);
+        pictureRender(picture);
     })
     .catch(err => {
         console.log("JSON error:", err);
@@ -13,6 +11,11 @@ fetch("json/product.json")
 
 function pictureRender(allPicture) {
     const parent = document.getElementById("design-parent");
+
+    if (!parent) {
+        console.error("Element 'design-parent' not found");
+        return;
+    }
 
     parent.innerHTML = "";
 

@@ -1,4 +1,4 @@
-let allProducts = [];
+// let allProducts = [];
 
 // Fetch products and organize by season
 fetch("json/product.json")
@@ -48,7 +48,7 @@ function organizeBySeasons(products) {
 // Fallback function to categorize by clothing type
 function categorizeByType(product) {
     const type = product.clothes_type ? product.clothes_type.toLowerCase() : '';
-    
+
     // Spring: light fabrics
     if (type.includes('cotton') || type.includes('linen')) {
         return 'spring';
@@ -65,7 +65,7 @@ function categorizeByType(product) {
     if (type.includes('velvet') || type.includes('wool')) {
         return 'winter';
     }
-    
+
     // Default distribution
     return 'spring';
 }
@@ -92,7 +92,7 @@ function renderSeason(season, products) {
 
         const discountBadge = product.discount ? `<div class="discount_badge">-${product.discount}%</div>` : "";
         const categoryNames = product.product_cat.map(cat => cat.category_name).join(", ");
-        const discountedPrice = product.discount 
+        const discountedPrice = product.discount
             ? Math.round(product.product_price * (1 - product.discount / 100))
             : product.product_price;
 
@@ -114,9 +114,9 @@ function renderSeason(season, products) {
                 </div>
                 <p class="collection-product-type">${product.clothes_type}</p>
                 <div class="color-swatches">
-                    ${product.color_verient ? product.color_verient.slice(0, 3).map(color => 
-                        `<span class="color-swatch" style="background-color: ${getColorCode(color.color)};" title="${color.color}"></span>`
-                    ).join('') : ''}
+                    ${product.color_verient ? product.color_verient.slice(0, 3).map(color =>
+            `<span class="color-swatch" style="background-color: ${getColorCode(color.color)};" title="${color.color}"></span>`
+        ).join('') : ''}
                 </div>
             </div>
         `;
@@ -143,6 +143,6 @@ function getColorCode(colorName) {
         'maroon': '#800000',
         'gold': '#ffd700'
     };
-    
+
     return colorMap[colorName.toLowerCase()] || '#cccccc';
 }
