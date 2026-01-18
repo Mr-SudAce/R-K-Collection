@@ -2,158 +2,208 @@
    CONTACT PAGE STYLES
 ========================= */
 
-/* CONTACT SECTION */
+/* HERO SECTION */
+/* CONTACT SECTION CONTAINER */
 .contact-section {
-    padding: 80px 40px;
+    padding: 0 40px 80px; /* Top padding handled by margin-bottom of hero */
     background-color: var(--bg-color);
     max-width: 1400px;
     margin: 0 auto;
 }
 
 .contact-container {
-    max-width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.info-card-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-
+/* CONTACT INFO CARD WRAPPER */
 .contact-info {
     background: white;
-    padding: 40px;
+    padding: 50px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.contact-intro {
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 30px;
-}
-
 .contact-info h2 {
-    font-size: 1.8rem;
-    margin-bottom: 25px;
+    font-size: 2rem;
+    margin-bottom: 15px;
     color: var(--text-color);
+    text-align: center;
 }
 
-/* INFO CARDS */
+.contact-intro {
+    font-size: 1.05rem;
+    color: #666;
+    margin-bottom: 50px;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* INFO CARDS GRID */
+.info-card-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+/* INDIVIDUAL INFO CARD */
 .info-card {
-    margin-bottom: 25px;
-    padding-bottom: 25px;
-    border-bottom: 1px solid var(--border-color);
     display: flex;
     gap: 20px;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: var(--bg-color);
 }
 
-.info-card:last-of-type {
-    border-bottom: none;
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+    background: white;
 }
 
-.info-icon {
-    font-size: 1.8rem;
+.info-card span {
+    font-size: 2rem;
     flex-shrink: 0;
-}
-
-.info-content h3 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
     color: var(--primary-color);
-    text-align: left;
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
 }
 
-.info-content p {
+.info-card > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.info-card p, 
+.info-card a {
     font-size: 0.95rem;
     color: #666;
     line-height: 1.6;
-    text-align: left;
-}
-
-.info-content a {
-    color: var(--primary-color);
     text-decoration: none;
-    font-weight: 600;
     transition: color 0.3s ease;
 }
 
-.info-content a:hover {
-    color: var(--hover-color);
+.info-card a:hover {
+    color: var(--primary-color);
 }
 
-/* SOCIAL LINKS */
+/* SOCIAL LINKS SECTION */
 .social-links {
     margin-top: 30px;
-    padding: 60px 30px;
-    min-height: 250px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    align-items: center;
 }
 
-.hero-content h1 {
-    font-size: 2.5rem;
+.social-links h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--text-color);
 }
 
-.contact-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
+.social-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
+.social-link {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+
+
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.social-link img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .info-card-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
 }
 
 @media (max-width: 768px) {
-    .page-hero {
-        padding: 40px 20px;
-        min-height: 200px;
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
     .contact-section {
-        padding: 50px 20px;
+        padding: 0 20px 50px;
     }
 
-    .contact-info,
-    .contact-form {
+    .contact-info {
         padding: 30px 20px;
     }
 
-    768px) {
-        .contact-section {
-            padding: 50px 20px;
-        }
-
-        .contact-info {
-            padding: 30px 20px;
-        }
-
-        .contact-info h2 {
-            font-size: 1.5rem;
-        }
+    .contact-info h2 {
+        font-size: 1.8rem;
     }
 
-    @media (max-width: 480px) {
-        .contact-section {
-            padding: 30px 15px;
-        }
+    .info-card-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 
-        .contact-info {
-            padding: 20px;
-        }
+    .info-card {
+        padding: 20px;
+    }
+}
 
-        .contact-info h2 {
-            font-size: 1.3rem;
-        }
+@media (max-width: 480px) {
+    .contact-info {
+        padding: 20px 15px;
+    }
 
-        .info-card {
-            flex-direction: column;
-            gap: 10px;
-        }
+    .contact-info h2 {
+        font-size: 1.5rem;
+    }
 
-        .info-icon {
-            font-size: 1.
+    .contact-intro {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+
+    .info-card {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .info-card span {
+        align-self: center;
+        padding-top: 0;
+    }
+
+    .social-icons {
+        gap: 15px;
+    }
+
+    .social-link img {
+        width: 35px;
+        height: 35px;
+    }
+}

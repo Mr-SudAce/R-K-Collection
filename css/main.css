@@ -65,13 +65,18 @@ body {
 }
 
 /* ===== COMMON HERO SECTION ===== */
-.hero_container_div {
+.hero_container_div,
+.page-hero,
+.contact-heading,
+.collection-hero,
+.about-hero {
     background: linear-gradient(135deg, #c73f45 0%, #d9373c 100%);
     color: white;
-    padding: 100px 40px;
+    padding: 80px 40px;
     text-align: center;
-    min-height: 350px;
+    min-height: 300px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -84,20 +89,22 @@ body {
     animation: fadeInUp 0.8s ease;
 }
 
-.hero-content h1 {
-    font-size: 3.5rem;
+.hero-content h1,
+.contact-heading h1,
+.collection-hero .hero-content h1 {
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 15px;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    letter-spacing: -1px;
 }
 
 .hero-content p,
-.hero-subtitle {
+.hero-subtitle,
+.contact-heading p,
+.collection-hero .hero-content p {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.95);
-    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-subtitle {
@@ -275,11 +282,10 @@ a:hover {
 
 /* ===== COMMON BUTTONS ===== */
 .btn,
-.btn-view {
+.btn-view,
+.cta-button {
     display: inline-block;
     padding: 12px 30px;
-    background-color: var(--primary-color);
-    color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -289,9 +295,22 @@ a:hover {
     text-decoration: none;
 }
 
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-view,
+.cta-button {
+    background-color: white;
+    color: var(--primary-color);
+}
+
 .btn:hover,
-.btn-view:hover {
-    background-color: var(--hover-color);
+.btn-view:hover,
+.cta-button:hover {
+    background-color: var(--primary-color);
+    color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(199, 63, 69, 0.3);
 }
@@ -483,5 +502,124 @@ a:hover {
     .btn-view {
         padding: 10px 20px;
         font-size: 0.85rem;
+    }
+}
+
+/* =========================
+   PRODUCT DETAIL MODAL
+========================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    z-index: 10;
+    line-height: 1;
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    max-height: 500px;
+}
+
+.modal-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-title {
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.modal-price-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.5rem;
+}
+
+.modal-original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1.1rem;
+}
+
+.color-circle {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .modal-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 25px;
+    }
+    .modal-image img {
+        max-height: 300px;
+    }
+    .modal-title {
+        font-size: 1.5rem;
     }
 }

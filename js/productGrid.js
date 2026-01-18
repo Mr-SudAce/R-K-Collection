@@ -81,12 +81,17 @@ function renderProducts(products) {
             <p class="product_price">₹${item.product_price}</p>
             <p class="product_detail">${item.clothes_type}</p>
             <div class="product-actions">
-                <button class="btn-add-cart">Add to Cart</button>
+                <button class="btn-add-cart view-details-btn">View Details</button>
                 <button class="btn-wishlist">♡</button>
             </div>
         </div>
         </div>
         `;
+        
+        // Add click event for details
+        const viewBtn = card.querySelector('.view-details-btn');
+        viewBtn.addEventListener('click', () => showProductDetail(item));
+        
         grid.appendChild(card);
     });
 }

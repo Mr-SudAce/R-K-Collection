@@ -3,45 +3,6 @@
 ========================= */
 
 /* PAGE HERO */
-.page-hero {
-    background: linear-gradient(135deg, #c73f45 0%, #d9373c 100%);
-    color: white;
-    padding: 80px 40px;
-    text-align: center;
-    min-height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: white;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* SECTION INTRO */
-.section-intro {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-intro h2 {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-    color: var(--text-color);
-}
-
-.section-intro p {
-    font-size: 1.05rem;
-    color: #666;
-}
 
 /* KIDS SECTION */
 .kids-section {
@@ -125,15 +86,6 @@
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-    .page-hero {
-        padding: 60px 30px;
-        min-height: 250px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
     .features-grid,
     .kids-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -142,19 +94,6 @@
 }
 
 @media (max-width: 768px) {
-    .page-hero {
-        padding: 40px 20px;
-        min-height: 200px;
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
     .kids-section,
     .kids-showcase {
         padding: 50px 20px;
@@ -172,19 +111,6 @@
 }
 
 @media (max-width: 480px) {
-    .page-hero {
-        padding: 30px 15px;
-        min-height: auto;
-    }
-
-    .hero-content h1 {
-        font-size: 1.5rem;
-    }
-
-    .hero-content p {
-        font-size: 0.9rem;
-    }
-
     .kids-section,
     .kids-showcase {
         padding: 30px 15px;
@@ -205,13 +131,5 @@
 
     .kids-item img {
         height: 200px;
-    }
-
-    .section-intro h2 {
-        font-size: 1.5rem;
-    }
-
-    .kids-showcase h2 {
-        font-size: 1.5rem;
     }
 }

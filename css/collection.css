@@ -5,18 +5,6 @@
 /* PAGE HERO */
 
 
-.collection-hero .hero-content h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: white;
-}
-
-.collection-hero .hero-content p {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
-}
-
 /* COLLECTION SECTION */
 .collections-container {
     max-width: 1400px;
@@ -69,15 +57,6 @@
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-    .collection-hero {
-        padding: 60px 30px;
-        min-height: 250px;
-    }
-
-    .collection-hero .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
     .seasonal-collection {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -90,19 +69,6 @@
 }
 
 @media (max-width: 768px) {
-    .collection-hero {
-        padding: 40px 20px;
-        min-height: 200px;
-    }
-
-    .collection-hero .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .collection-hero .hero-content p {
-        font-size: 1rem;
-    }
-
     .collections-container {
         padding: 50px 20px;
     }
@@ -113,19 +79,6 @@
 }
 
 @media (max-width: 480px) {
-    .collection-hero {
-        padding: 30px 15px;
-        min-height: auto;
-    }
-
-    .collection-hero .hero-content h1 {
-        font-size: 1.5rem;
-    }
-
-    .collection-hero .hero-content p {
-        font-size: 0.9rem;
-    }
-
     .collections-container {
         padding: 30px 15px;
     }
@@ -245,16 +198,6 @@
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.3s ease;
-}
-
-.btn-view {
-    background: white;
-    color: var(--primary-color);
-}
-
-.btn-view:hover {
-    background: var(--primary-color);
-    color: white;
 }
 
 .btn-cart {

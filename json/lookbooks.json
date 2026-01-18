@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "title": "Our Lookbooks",
+    "subtitle": "Get inspired by our curated style collections"
+  },
+  "intro": {
+    "heading": "Explore Our Collections",
+    "text": "Beautifully curated outfits to inspire your personal style"
+  },
+  "collections": [
+    {
+      "title": "Spring Collection 2024",
+      "description": "Fresh colors and flowing designs perfect for the season",
+      "image": "https://picsum.photos/id/10/400/500",
+      "link": "#collection-page"
+    },
+    {
+      "title": "Summer Vibes",
+      "description": "Light, airy pieces for the perfect beach getaway",
+      "image": "https://picsum.photos/id/11/400/500",
+      "link": "#collection-page"
+    },
+    {
+      "title": "Autumn Fashion",
+      "description": "Warm tones and sophisticated styles for fall",
+      "image": "https://picsum.photos/id/12/400/500",
+      "link": "#collection-page"
+    },
+    {
+      "title": "Winter Elegance",
+      "description": "Chic and cozy pieces for the winter season",
+      "image": "https://picsum.photos/id/13/400/500",
+      "link": "#collection-page"
+    }
+  ]
+}

@@ -222,36 +222,6 @@
     z-index: 2;
 }
 
-.cta-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-.cta-section p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.cta-button {
-    display: inline-block;
-    background: white;
-    color: var(--primary-color);
-    padding: 15px 45px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    font-size: 1rem;
-}
-
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-}
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
     .container {
@@ -261,10 +231,6 @@
     .about-hero {
         padding: 80px 30px;
         min-height: 300px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.8rem;
     }
 
     .story-grid {
@@ -304,14 +270,6 @@
         min-height: 250px;
     }
 
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
     .story-section,
     .mission-vision,
     .values-section,
@@ -349,14 +307,6 @@
     .cta-section {
         padding: 60px 20px;
     }
-
-    .cta-section h2 {
-        font-size: 1.8rem;
-    }
-
-    .cta-section p {
-        font-size: 1rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -367,15 +317,6 @@
     .about-hero {
         padding: 40px 15px;
         min-height: auto;
-    }
-
-    .hero-content h1 {
-        font-size: 1.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 0.9rem;
-        letter-spacing: 1px;
     }
 
     .story-section,
@@ -449,18 +390,5 @@
 
     .cta-section {
         padding: 40px 15px;
-    }
-
-    .cta-section h2 {
-        font-size: 1.4rem;
-    }
-
-    .cta-section p {
-        font-size: 0.95rem;
-    }
-
-    .cta-button {
-        padding: 12px 35px;
-        font-size: 0.9rem;
     }
 }

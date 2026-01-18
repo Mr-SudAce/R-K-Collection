@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "title": "About R & K Collections",
+    "subtitle": "Crafting Elegance, Celebrating Heritage"
+  },
+  "story": {
+    "heading": "Our Story",
+    "paragraphs": [
+      "R & K Collections began with a simple vision: to create fashion that celebrates individuality and embraces both tradition and modernity. What started as a small passion project has blossomed into a beloved brand trusted by fashion enthusiasts worldwide.",
+      "Every piece in our collection tells a story of craftsmanship, dedication, and a deep love for fashion. We believe that clothing is more than just fabric—it's a form of self-expression."
+    ],
+    "stats": [
+      { "value": "10K+", "label": "Happy Customers" },
+      { "value": "500+", "label": "Unique Pieces" },
+      { "value": "5+", "label": "Years Strong" },
+      { "value": "100%", "label": "Quality Assured" }
+    ]
+  },
+  "mission_vision": [
+    {
+      "icon": "🎯",
+      "title": "Our Mission",
+      "description": "To empower individuals through fashion by providing curated collections that blend heritage with contemporary style. We're committed to quality, sustainability, and exceptional customer service."
+    },
+    {
+      "icon": "👁️",
+      "title": "Our Vision",
+      "description": "To become the go-to destination for fashion lovers seeking premium quality, unique designs, and values-driven business practices that respect both people and the planet."
+    }
+  ],
+  "values": {
+    "heading": "Our Core Values",
+    "items": [
+      { "icon": "✨", "title": "Excellence", "description": "We pursue perfection in every stitch, every fabric, and every interaction with our customers." },
+      { "icon": "🌱", "title": "Sustainability", "description": "Eco-conscious practices and ethical sourcing are at the heart of everything we create." },
+      { "icon": "💡", "title": "Innovation", "description": "We blend traditional craftsmanship with modern design to create timeless pieces." },
+      { "icon": "❤️", "title": "Customer Focus", "description": "Your satisfaction and happiness are our greatest achievements and priorities." }
+    ]
+  },
+  "team": {
+    "heading": "Meet Our Creative Team",
+    "subtitle": "Passionate professionals dedicated to bringing your style dreams to life",
+    "members": [
+      { "icon": "👗", "title": "Design Team", "description": "Award-winning designers with years of experience in fashion forecasting and trend analysis" },
+      { "icon": "🛠️", "title": "Craftsmanship", "description": "Master artisans and skilled craftspeople committed to perfecting every detail" },
+      { "icon": "📦", "title": "Quality Control", "description": "Expert inspectors ensuring every piece meets our rigorous quality standards" },
+      { "icon": "🤝", "title": "Customer Service", "description": "Dedicated team members here to support your journey with R & K Collections" }
+    ]
+  }
+}

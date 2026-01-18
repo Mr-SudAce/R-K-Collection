@@ -101,8 +101,8 @@ function renderSeason(season, products) {
                 ${discountBadge}
                 <img src="${product.product_image}" class="collection-product-image" alt="${product.product_name}">
                 <div class="card-overlay">
-                    <a href="#" class="btn btn-view">View Details</a>
-                    <a href="#" class="btn btn-cart">Add to Cart</a>
+                    <button class="btn btn-view view-details-btn">View Details</button>
+                    <button class="btn btn-cart">Add to Cart</button>
                 </div>
             </div>
             <div class="collection-product-info">
@@ -120,6 +120,14 @@ function renderSeason(season, products) {
                 </div>
             </div>
         `;
+
+        // Add click event for details
+        const viewBtn = card.querySelector('.view-details-btn');
+        viewBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showProductDetail(product);
+        });
+
         container.appendChild(card);
     });
 }

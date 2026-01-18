@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title": "Kids Collection",
+    "subtitle": "Comfortable, stylish, and fun clothing for children"
+  },
+  "intro": {
+    "heading": "Why Choose Our Kids Collection?",
+    "text": "Premium quality with playful designs your kids will love"
+  },
+  "features": [
+    { "icon": "👶", "title": "Comforting First", "description": "Soft, breathable fabrics designed for active kids" },
+    { "icon": "🎨", "title": "Vibrant Colors", "description": "Colorful and playful designs kids love" },
+    { "icon": "🌱", "title": "Eco-Friendly", "description": "Sustainable and safe materials for your child" },
+    { "icon": "💪", "title": "Durable", "description": "Built to withstand active play and frequent washing" }
+  ],
+  "showcase": {
+    "heading": "Featured Kids Styles",
+    "images": [
+      { "src": "https://picsum.photos/id/110/300/350", "alt": "Kids wear 1" },
+      { "src": "https://picsum.photos/id/111/300/350", "alt": "Kids wear 2" },
+      { "src": "https://picsum.photos/id/112/300/350", "alt": "Kids wear 3" },
+      { "src": "https://picsum.photos/id/113/300/350", "alt": "Kids wear 4" }
+    ]
+  }
+}

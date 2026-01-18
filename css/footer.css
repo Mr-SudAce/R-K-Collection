@@ -69,7 +69,6 @@ footer h4 {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background-color: var(--primary-color);
     border-radius: 50%;
     transition: all 0.3s ease;
 }
