@@ -1,7 +1,9 @@
 let allProducts = [];
 let filters = {
     category: 'all',
-    price: 10000,
+    clothesType: 'all',
+    minPrice: 0,
+    maxPrice: 10000,
     color: 'all',
     season: 'all'
 };
@@ -12,6 +14,7 @@ fetch("json/product.json")
     .then(products => {
         allProducts = products;
         generateCategoryButtons(allProducts);
+        generateClothesTypeFilters(allProducts);
         generateColorFilters(allProducts);
         generateSeasonFilters(allProducts);
         renderProducts(allProducts);
@@ -32,8 +35,13 @@ function applyFilters() {
         );
     }
 
+    // Filter by clothes type
+    if (filters.clothesType !== 'all') {
+        filtered = filtered.filter(item => item.clothes_type && item.clothes_type.toLowerCase() === filters.clothesType);
+    }
+
     // Filter by price
-    filtered = filtered.filter(item => item.product_price <= filters.price);
+    filtered = filtered.filter(item => item.product_price >= filters.minPrice && item.product_price <= filters.maxPrice);
 
     // Filter by color
     if (filters.color !== 'all') {
@@ -149,6 +157,47 @@ function generateCategoryButtons(products) {
     categoryContainer.appendChild(select);
 }
 
+// Generate Clothes Type Dropdown
+function generateClothesTypeFilters(products) {
+    const typeContainer = document.getElementById("clothesTypeFilter");
+    if (!typeContainer) return;
+    typeContainer.innerHTML = "";
+
+    // Get unique types
+    const typesSet = new Set();
+    products.forEach(item => {
+        if (item.clothes_type) {
+            typesSet.add(item.clothes_type.toLowerCase());
+        }
+    });
+    const types = Array.from(typesSet).sort();
+
+    // Create Select
+    const select = document.createElement("select");
+    select.className = "filter-dropdown";
+    
+    // All Option
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = "All Types";
+    select.appendChild(allOption);
+
+    // Type Options
+    types.forEach(typeName => {
+        const option = document.createElement("option");
+        option.value = typeName;
+        option.textContent = capitalize(typeName);
+        select.appendChild(option);
+    });
+
+    select.addEventListener("change", (e) => {
+        filters.clothesType = e.target.value;
+        applyFilters();
+    });
+
+    typeContainer.appendChild(select);
+}
+
 // Generate Season Dropdown
 function generateSeasonFilters(products) {
     const seasonContainer = document.getElementById("seasonFilter");
@@ -235,13 +284,28 @@ function generateColorFilters(products) {
 function setupEventListeners() {
     // Price range slider
     const priceSlider = document.getElementById("priceRange");
-    const priceValue = document.getElementById("priceValue");
+    const minPriceInput = document.getElementById("minPrice");
+    const maxPriceInput = document.getElementById("maxPrice");
 
-    if (priceSlider) {
+    function updatePrices() {
+        filters.minPrice = Number(minPriceInput.value) || 0;
+        filters.maxPrice = Number(maxPriceInput.value) || 10000;
+        applyFilters();
+    }
+
+    if (minPriceInput) minPriceInput.addEventListener("input", updatePrices);
+
+    if (maxPriceInput) {
+        maxPriceInput.addEventListener("input", () => {
+            if (priceSlider) priceSlider.value = maxPriceInput.value;
+            updatePrices();
+        });
+    }
+
+    if (priceSlider && maxPriceInput) {
         priceSlider.addEventListener("input", (e) => {
-            filters.price = e.target.value;
-            priceValue.textContent = e.target.value;
-            applyFilters();
+            maxPriceInput.value = e.target.value;
+            updatePrices();
         });
     }
 
@@ -251,16 +315,24 @@ function setupEventListeners() {
         resetBtn.addEventListener("click", () => {
             filters = {
                 category: 'all',
-                price: 10000,
+                clothesType: 'all',
+                minPrice: 0,
+                maxPrice: 10000,
                 color: 'all',
                 season: 'all'
             };
+            
+            if (minPriceInput) minPriceInput.value = 0;
+            if (maxPriceInput) maxPriceInput.value = 10000;
             if (priceSlider) priceSlider.value = 10000;
-            if (priceValue) priceValue.textContent = 10000;
 
             // Reset category select
             const categorySelect = document.querySelector("#categoryFilter select");
             if(categorySelect) categorySelect.value = 'all';
+
+            // Reset clothes type select
+            const typeSelect = document.querySelector("#clothesTypeFilter select");
+            if(typeSelect) typeSelect.value = 'all';
 
             // Reset color select
             const colorSelect = document.querySelector("#colorFilter select");

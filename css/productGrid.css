@@ -65,6 +65,11 @@
     width: 100%;
 }
 
+/* Clothes Type Filter */
+.clothesTypeFilter {
+    width: 100%;
+}
+
 /* Dropdown Styles */
 .filter-dropdown {
     width: 100%;
@@ -130,10 +135,18 @@
     box-shadow: 0 0 10px rgba(199, 63, 69, 0.3);
 }
 
-.price-range-container p {
-    font-size: 0.95rem;
-    color: var(--text-color);
-    font-weight: 600;
+.price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.price-inputs input {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
 }
 
 /* Color Filter */

@@ -8,10 +8,19 @@
         </div>
 
         <div class="filter-group">
+            <h3>Clothes Type</h3>
+            <div id="clothesTypeFilter" class="clothesTypeFilter"></div>
+        </div>
+
+        <div class="filter-group">
             <h3>Price Range</h3>
             <div class="price-range-container">
+                <div class="price-inputs">
+                    <input type="number" id="minPrice" value="0" min="0" placeholder="Min">
+                    <span>-</span>
+                    <input type="number" id="maxPrice" value="10000" min="0" placeholder="Max">
+                </div>
                 <input type="range" id="priceRange" min="0" max="10000" value="10000" class="price-slider">
-                <p>Rs.0 - Rs.<span id="priceValue">10000</span></p>
             </div>
         </div>
 
