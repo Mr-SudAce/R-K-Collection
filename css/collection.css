@@ -2,8 +2,6 @@
    COLLECTION PAGE STYLES
 ========================= */
 
-/* PAGE HERO */
-
 
 /* COLLECTION SECTION */
 .collections-container {
@@ -21,13 +19,24 @@
     align-items: center;
 }
 
-.seasonal-collection:nth-child(even) {
-    grid-template-columns: 1fr 1fr;
-    direction: rtl;
+.collection-header {
+    grid-column: 1;
+    grid-row: 1;
 }
 
-.seasonal-collection:nth-child(even) > * {
-    direction: ltr;
+.collection-preview {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.seasonal-collection:nth-child(even) .collection-header {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.seasonal-collection:nth-child(even) .collection-preview {
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .collection-header h2 {
@@ -62,9 +71,12 @@
         gap: 30px;
     }
 
-    .seasonal-collection:nth-child(even) {
-        grid-template-columns: 1fr;
-        direction: ltr;
+    .collection-header,
+    .collection-preview,
+    .seasonal-collection:nth-child(even) .collection-header,
+    .seasonal-collection:nth-child(even) .collection-preview {
+        grid-column: auto;
+        grid-row: auto;
     }
 }
 
@@ -125,6 +137,7 @@
 ========================= */
 .season-grid {
     display: grid;
+    grid-column: 1 / -1;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 30px;
     max-width: 1400px;
