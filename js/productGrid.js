@@ -96,12 +96,10 @@ function renderProducts(products) {
     });
 }
 
-// Generate Category Buttons Dynamically
+// Generate Category Dropdown
 function generateCategoryButtons(products) {
     const categoryContainer = document.getElementById("categoryFilter");
-
     if (!categoryContainer) return;
-
     categoryContainer.innerHTML = "";
 
     // Get unique categories
@@ -109,41 +107,38 @@ function generateCategoryButtons(products) {
     products.forEach(item => {
         item.product_cat.forEach(cat => categoriesSet.add(cat.category_name.toLowerCase()));
     });
-
     const categories = Array.from(categoriesSet).sort();
 
-    // Add 'All' button first
-    const allBtn = document.createElement("button");
-    allBtn.dataset.category = "all";
-    allBtn.textContent = `All`;
-    allBtn.classList.add("active");
-    categoryContainer.appendChild(allBtn);
+    // Create Select
+    const select = document.createElement("select");
+    select.className = "filter-dropdown";
+    
+    // All Option
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = "All Categories";
+    select.appendChild(allOption);
 
-    // Add buttons for each category
+    // Category Options
     categories.forEach(catName => {
         const count = products.filter(item =>
             item.product_cat.some(cat => cat.category_name.toLowerCase() === catName)
         ).length;
-
-        const btn = document.createElement("button");
-        btn.dataset.category = catName;
-        btn.textContent = `${capitalize(catName)} (${count})`;
-        categoryContainer.appendChild(btn);
+        const option = document.createElement("option");
+        option.value = catName;
+        option.textContent = `${capitalize(catName)} (${count})`;
+        select.appendChild(option);
     });
 
-    // Add click event listener
-    const categoryButtons = categoryContainer.querySelectorAll("button");
-    categoryButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            categoryButtons.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            filters.category = btn.dataset.category;
-            applyFilters();
-        });
+    select.addEventListener("change", (e) => {
+        filters.category = e.target.value;
+        applyFilters();
     });
+
+    categoryContainer.appendChild(select);
 }
 
-// Generate Season Filters
+// Generate Season Dropdown
 function generateSeasonFilters(products) {
     const seasonContainer = document.getElementById("seasonFilter");
     seasonContainer.innerHTML = "";
@@ -155,38 +150,35 @@ function generateSeasonFilters(products) {
             seasonsSet.add(item.season.toLowerCase());
         }
     });
-
     const seasons = Array.from(seasonsSet).sort();
 
-    // Add 'All' option first
-    const allLabel = document.createElement("label");
-    const allRadio = document.createElement("input");
-    allRadio.type = "radio";
-    allRadio.name = "season";
-    allRadio.value = "all";
-    allRadio.checked = true;
-    allLabel.appendChild(allRadio);
-    allLabel.appendChild(document.createTextNode("All"));
-    seasonContainer.appendChild(allLabel);
+    // Create Select
+    const select = document.createElement("select");
+    select.className = "filter-dropdown";
 
-    // Add season options
+    // All Option
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = "All Seasons";
+    select.appendChild(allOption);
+
+    // Season Options
     seasons.forEach(seasonName => {
-        const label = document.createElement("label");
-        const radio = document.createElement("input");
-        radio.type = "radio";
-        radio.name = "season";
-        radio.value = seasonName;
-        radio.addEventListener("change", (e) => {
-            filters.season = e.target.value;
-            applyFilters();
-        });
-        label.appendChild(radio);
-        label.appendChild(document.createTextNode(capitalize(seasonName)));
-        seasonContainer.appendChild(label);
+        const option = document.createElement("option");
+        option.value = seasonName;
+        option.textContent = capitalize(seasonName);
+        select.appendChild(option);
     });
+
+    select.addEventListener("change", (e) => {
+        filters.season = e.target.value;
+        applyFilters();
+    });
+
+    seasonContainer.appendChild(select);
 }
 
-// Generate Color Filters
+// Generate Color Dropdown
 function generateColorFilters(products) {
     const colorContainer = document.getElementById("colorFilter");
     colorContainer.innerHTML = "";
@@ -200,35 +192,32 @@ function generateColorFilters(products) {
             });
         }
     });
-
     const colors = Array.from(colorsSet).sort();
 
-    // Add 'All' option first
-    const allLabel = document.createElement("label");
-    const allCheckbox = document.createElement("input");
-    allCheckbox.type = "radio";
-    allCheckbox.name = "color";
-    allCheckbox.value = "all";
-    allCheckbox.checked = true;
-    allLabel.appendChild(allCheckbox);
-    allLabel.appendChild(document.createTextNode("All"));
-    colorContainer.appendChild(allLabel);
+    // Create Select
+    const select = document.createElement("select");
+    select.className = "filter-dropdown";
 
-    // Add color options
+    // All Option
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = "All Colors";
+    select.appendChild(allOption);
+
+    // Color Options
     colors.forEach(colorName => {
-        const label = document.createElement("label");
-        const checkbox = document.createElement("input");
-        checkbox.type = "radio";
-        checkbox.name = "color";
-        checkbox.value = colorName;
-        checkbox.addEventListener("change", (e) => {
-            filters.color = e.target.value;
-            applyFilters();
-        });
-        label.appendChild(checkbox);
-        label.appendChild(document.createTextNode(capitalize(colorName)));
-        colorContainer.appendChild(label);
+        const option = document.createElement("option");
+        option.value = colorName;
+        option.textContent = capitalize(colorName);
+        select.appendChild(option);
     });
+
+    select.addEventListener("change", (e) => {
+        filters.color = e.target.value;
+        applyFilters();
+    });
+
+    colorContainer.appendChild(select);
 }
 
 // Setup Event Listeners
@@ -258,18 +247,17 @@ function setupEventListeners() {
             if (priceSlider) priceSlider.value = 10000;
             if (priceValue) priceValue.textContent = 10000;
 
-            // Reset category buttons
-            const categoryButtons = document.querySelectorAll("#categoryFilter button");
-            categoryButtons.forEach(btn => btn.classList.remove("active"));
-            categoryButtons[0].classList.add("active");
+            // Reset category select
+            const categorySelect = document.querySelector("#categoryFilter select");
+            if(categorySelect) categorySelect.value = 'all';
 
-            // Reset color radios
-            const colorRadios = document.querySelectorAll("input[name='color']");
-            colorRadios.forEach(radio => radio.checked = radio.value === 'all');
+            // Reset color select
+            const colorSelect = document.querySelector("#colorFilter select");
+            if(colorSelect) colorSelect.value = 'all';
 
-            // Reset season radios
-            const seasonRadios = document.querySelectorAll("input[name='season']");
-            seasonRadios.forEach(radio => radio.checked = radio.value === 'all');
+            // Reset season select
+            const seasonSelect = document.querySelector("#seasonFilter select");
+            if(seasonSelect) seasonSelect.value = 'all';
 
             renderProducts(allProducts);
         });
