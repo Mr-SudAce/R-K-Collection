@@ -1,3 +1,20 @@
+// Wishlist Global Logic
+window.wishlist = JSON.parse(localStorage.getItem('rk_wishlist')) || [];
+
+window.toggleWishlist = function(product) {
+    const index = window.wishlist.findIndex(p => p.product_name === product.product_name);
+    
+    if (index === -1) {
+        window.wishlist.push(product);
+        alert("Added to wishlist!");
+    } else {
+        window.wishlist.splice(index, 1);
+        alert("Removed from wishlist!");
+    }
+    localStorage.setItem('rk_wishlist', JSON.stringify(window.wishlist));
+    window.dispatchEvent(new CustomEvent('wishlistUpdated'));
+};
+
 // title
 document.title = "R & K Collections";
 
@@ -16,7 +33,7 @@ function loadCSS(filename) {
 // content
 const file = [
     // common
-    { files: "common/navbar.html", id: "navbar" },
+    { files: "common/navbar.html", id: "navbar", css: "navbar.css" },
     { files: "common/footer.html", id: "footer" },
     { files: "common/header.html", id: "header" },
     // template
@@ -28,6 +45,7 @@ const file = [
     { files: "aboutus.html", id: "about-section", css: "aboutus.css", js: "js/about.js" },
     { files: "lookbooks.html", id: "lookbooks-section", css: "lookbooks.css", js: "js/lookbooks.js" },
     { files: "children.html", id: "children-section", css: "children.css", js: "js/children.js" },
+    { files: "wishlist.html", id: "wishlist-section", css: "wishlist.css", js: "js/wishlist.js" },
 ]
 
 // mapped the file so render the file

@@ -11,6 +11,9 @@ function showProductDetail(product) {
         ? Math.round(product.product_price * (1 - product.discount / 100))
         : product.product_price;
 
+    const isInWishlist = window.wishlist && window.wishlist.some(p => p.product_name === product.product_name);
+    const wishlistText = isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist';
+
     // Create modal HTML
     const modalHTML = `
         <div id="product-detail-modal" class="modal-overlay">
@@ -23,7 +26,7 @@ function showProductDetail(product) {
                     <div class="modal-details">
                         <h2 class="modal-title">${product.product_name}</h2>
                         <div class="modal-price-area">
-                            <span class="modal-price">₹${discountedPrice}</span>
+                            <span class="modal-price">Rs.${discountedPrice}</span>
                             ${product.discount ? `<span class="modal-original-price">₹${product.product_price}</span>` : ''}
                             ${product.discount ? `<span class="modal-discount">-${product.discount}% OFF</span>` : ''}
                         </div>
@@ -44,8 +47,8 @@ function showProductDetail(product) {
                         </div>
 
                         <div class="modal-actions">
-                            <button class="btn btn-add-cart" onclick="alert('Added to cart!')">Add to Cart</button>
-                            <button class="btn btn-outline btn-wishlist" onclick="alert('Added to wishlist!')">Add to Wishlist</button>
+                            <button class="btn btn-add-cart" onclick="window.location.href = '#contact-section'">Contact Us</button>
+                            <button class="btn btn-outline btn-wishlist" id="modal-wishlist-btn">${wishlistText}</button>
                         </div>
                     </div>
                 </div>
@@ -59,6 +62,14 @@ function showProductDetail(product) {
     // Add event listeners
     const modal = document.getElementById('product-detail-modal');
     const closeBtn = modal.querySelector('.modal-close');
+
+    // Wishlist Logic
+    const wishBtn = document.getElementById('modal-wishlist-btn');
+    wishBtn.onclick = () => {
+        window.toggleWishlist(product);
+        const inList = window.wishlist.some(p => p.product_name === product.product_name);
+        wishBtn.textContent = inList ? 'Remove from Wishlist' : 'Add to Wishlist';
+    };
 
     // Show modal (small delay to allow CSS transition if added)
     requestAnimationFrame(() => {

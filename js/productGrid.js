@@ -70,6 +70,8 @@ function renderProducts(products) {
 
         const discountBadge = item.discount ? `<div class="discount_badge">-${item.discount}%</div>` : "";
         const categoryNames = item.product_cat.map(cat => cat.category_name).join(", ");
+        const isInWishlist = window.wishlist && window.wishlist.some(p => p.product_name === item.product_name);
+        const heartIcon = isInWishlist ? '❤️' : '♡';
 
         card.innerHTML = `
         <div class="cardbox">
@@ -78,11 +80,11 @@ function renderProducts(products) {
         <div class="product-info">
             <p class="product_title">${item.product_name}</p>
             <p class="product_category">${categoryNames}</p>
-            <p class="product_price">₹${item.product_price}</p>
+            <p class="product_price">Rs.${item.product_price}</p>
             <p class="product_detail">${item.clothes_type}</p>
             <div class="product-actions">
                 <button class="btn-add-cart view-details-btn">View Details</button>
-                <button class="btn-wishlist">♡</button>
+                <button class="btn-wishlist">${heartIcon}</button>
             </div>
         </div>
         </div>
@@ -91,6 +93,15 @@ function renderProducts(products) {
         // Add click event for details
         const viewBtn = card.querySelector('.view-details-btn');
         viewBtn.addEventListener('click', () => showProductDetail(item));
+
+        // Add click event for wishlist
+        const wishBtn = card.querySelector('.btn-wishlist');
+        wishBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            window.toggleWishlist(item);
+            const inList = window.wishlist.some(p => p.product_name === item.product_name);
+            wishBtn.textContent = inList ? '❤️' : '♡';
+        });
         
         grid.appendChild(card);
     });

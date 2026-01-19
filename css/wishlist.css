@@ -1,0 +1,171 @@
+.wishlist-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.wishlist-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.wishlist-header h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.wishlist-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+/* Reuse card styles from productGrid.css via global classes, 
+   but add specific override for remove button if needed */
+.remove-wishlist-btn {
+    background-color: #ff4444;
+    color: white;
+}
+
+.remove-wishlist-btn:hover {
+    background-color: #cc0000;
+}
+
+/* =========================
+   NAVBAR WISHLIST DROPDOWN
+========================= */
+#wishlist-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 100%;
+}
+
+.wishlist-link {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.wishlist-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 320px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 15px;
+    z-index: 1000;
+    border: 1px solid #f0f0f0;
+    margin-top: 15px;
+    cursor: default;
+    text-align: left;
+}
+
+#wishlist-box:hover .wishlist-dropdown {
+    display: block;
+}
+
+/* Dropdown Arrow */
+.wishlist-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    transform: rotate(45deg);
+    border-left: 1px solid #f0f0f0;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Dropdown Items */
+.wishlist-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f5f5f5;
+    gap: 12px;
+}
+
+.wishlist-dropdown-img {
+    width: 50px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.wishlist-dropdown-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.wishlist-dropdown-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wishlist-dropdown-price {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+}
+
+.wishlist-dropdown-remove {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.2s;
+}
+
+.wishlist-dropdown-remove:hover {
+    color: #ff4444;
+}
+
+/* View Button */
+.wishlist-view-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.wishlist-view-btn:hover {
+    background-color: #000;
+}
+
+/* Empty State */
+.wishlist-empty-msg {
+    text-align: center;
+    color: #888;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
