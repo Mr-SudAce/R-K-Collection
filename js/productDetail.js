@@ -14,14 +14,28 @@ function showProductDetail(product) {
     const isInWishlist = window.wishlist && window.wishlist.some(p => p.product_name === product.product_name);
     const wishlistText = isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist';
 
+    // Handle Images (Max 4)
+    let images = product.related_productImage && product.related_productImage.length > 0
+        ? product.related_productImage
+        : (product.product_images && product.product_images.length > 0 
+            ? product.product_images 
+            : (product.product_image ? [product.product_image] : []));
+    
+    // Limit to 4 images
+    images = images.slice(0, 4);
+    const mainImageSrc = images.length > 0 ? images[0] : '';
+
     // Create modal HTML
     const modalHTML = `
         <div id="product-detail-modal" class="modal-overlay">
             <div class="modal-content">
                 <button class="modal-close">&times;</button>
                 <div class="modal-body">
-                    <div class="modal-image">
-                        <img src="${product.product_image}" alt="${product.product_name}">
+                    <div class="modal-image-gallery">
+                        <div class="main-image-container">
+                            <img src="${mainImageSrc}" alt="${product.product_name}" id="detail-main-image">
+                        </div>
+                        <div class="thumbnails-container" id="modal-thumbnails"></div>
                     </div>
                     <div class="modal-details">
                         <h2 class="modal-title">${product.product_name}</h2>
@@ -62,6 +76,26 @@ function showProductDetail(product) {
     // Add event listeners
     const modal = document.getElementById('product-detail-modal');
     const closeBtn = modal.querySelector('.modal-close');
+
+    // Render Thumbnails
+    const thumbContainer = document.getElementById('modal-thumbnails');
+    if (images.length > 1) {
+        images.forEach((imgSrc, index) => {
+            const thumb = document.createElement('img');
+            thumb.src = imgSrc;
+            thumb.classList.add('modal-thumb');
+            if (index === 0) thumb.classList.add('active');
+            
+            thumb.addEventListener('click', () => {
+                // Update main image
+                document.getElementById('detail-main-image').src = imgSrc;
+                // Update active class
+                modal.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            });
+            thumbContainer.appendChild(thumb);
+        });
+    }
 
     // Wishlist Logic
     const wishBtn = document.getElementById('modal-wishlist-btn');

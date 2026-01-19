@@ -468,3 +468,41 @@
         font-size: 0.8rem;
     }
 }
+
+/* =========================
+   PRODUCT DETAIL MODAL GALLERY
+========================= */
+.modal-image-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.main-image-container img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.thumbnails-container {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-thumb {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.modal-thumb:hover,
+.modal-thumb.active {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}

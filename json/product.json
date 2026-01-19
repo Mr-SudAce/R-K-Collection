@@ -7,8 +7,28 @@
     "product_image": "https://picsum.photos/id/64/300/400",
     "clothes_type": "Cotton",
     "season": "Summer",
-    "product_cat": [{ "category_name": "Women" }, { "category_name": "Dresses" }],
-    "color_verient": [{ "color": "Pink" }, { "color": "White" }]
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Dresses"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Pink"
+      },
+      {
+        "color": "White"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/64/300/400",
+      "https://picsum.photos/id/101/300/400",
+      "https://picsum.photos/id/102/300/400",
+      "https://picsum.photos/id/103/300/400"
+    ]
   },
   {
     "id": 2,
@@ -18,8 +38,28 @@
     "product_image": "https://picsum.photos/id/65/300/400",
     "clothes_type": "Wool",
     "season": "Winter",
-    "product_cat": [{ "category_name": "Women" }, { "category_name": "Outerwear" }],
-    "color_verient": [{ "color": "Beige" }, { "color": "Black" }]
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Outerwear"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Beige"
+      },
+      {
+        "color": "Black"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/65/300/400",
+      "https://picsum.photos/id/104/300/400",
+      "https://picsum.photos/id/105/300/400",
+      "https://picsum.photos/id/106/300/400"
+    ]
   },
   {
     "id": 3,
@@ -29,8 +69,28 @@
     "product_image": "https://picsum.photos/id/66/300/400",
     "clothes_type": "Linen",
     "season": "Spring",
-    "product_cat": [{ "category_name": "Men" }, { "category_name": "Shirts" }],
-    "color_verient": [{ "color": "Blue" }, { "color": "White" }]
+    "product_cat": [
+      {
+        "category_name": "Men"
+      },
+      {
+        "category_name": "Shirts"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Blue"
+      },
+      {
+        "color": "White"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/66/300/400",
+      "https://picsum.photos/id/107/300/400",
+      "https://picsum.photos/id/108/300/400",
+      "https://picsum.photos/id/109/300/400"
+    ]
   },
   {
     "id": 4,
@@ -40,7 +100,647 @@
     "product_image": "https://picsum.photos/id/67/300/400",
     "clothes_type": "Wool Blend",
     "season": "Autumn",
-    "product_cat": [{ "category_name": "Unisex" }, { "category_name": "Tops" }],
-    "color_verient": [{ "color": "Brown" }, { "color": "Orange" }]
+    "product_cat": [
+      {
+        "category_name": "Unisex"
+      },
+      {
+        "category_name": "Tops"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Brown"
+      },
+      {
+        "color": "Orange"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/67/300/400",
+      "https://picsum.photos/id/110/300/400",
+      "https://picsum.photos/id/111/300/400",
+      "https://picsum.photos/id/112/300/400"
+    ]
+  },
+  {
+    "id": 5,
+    "product_name": "Silk Evening Gown",
+    "product_price": 12000,
+    "discount": 0,
+    "product_image": "https://picsum.photos/id/68/300/400",
+    "clothes_type": "Silk",
+    "season": "Summer",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Dresses"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Red"
+      },
+      {
+        "color": "Black"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/68/300/400",
+      "https://picsum.photos/id/113/300/400",
+      "https://picsum.photos/id/114/300/400",
+      "https://picsum.photos/id/115/300/400"
+    ]
+  },
+  {
+    "id": 6,
+    "product_name": "Denim Jacket",
+    "product_price": 3500,
+    "discount": 5,
+    "product_image": "https://picsum.photos/id/69/300/400",
+    "clothes_type": "Denim",
+    "season": "Spring",
+    "product_cat": [
+      {
+        "category_name": "Unisex"
+      },
+      {
+        "category_name": "Outerwear"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Blue"
+      },
+      {
+        "color": "Black"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/69/300/400",
+      "https://picsum.photos/id/116/300/400",
+      "https://picsum.photos/id/117/300/400",
+      "https://picsum.photos/id/118/300/400"
+    ]
+  },
+  {
+    "id": 7,
+    "product_name": "Leather Biker Jacket",
+    "product_price": 9500,
+    "discount": 10,
+    "product_image": "https://picsum.photos/id/70/300/400",
+    "clothes_type": "Leather",
+    "season": "Winter",
+    "product_cat": [
+      {
+        "category_name": "Men"
+      },
+      {
+        "category_name": "Outerwear"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Black"
+      },
+      {
+        "color": "Brown"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/70/300/400",
+      "https://picsum.photos/id/119/300/400",
+      "https://picsum.photos/id/120/300/400",
+      "https://picsum.photos/id/121/300/400"
+    ]
+  },
+  {
+    "id": 8,
+    "product_name": "Pleated Midi Skirt",
+    "product_price": 2200,
+    "discount": 15,
+    "product_image": "https://picsum.photos/id/71/300/400",
+    "clothes_type": "Polyester",
+    "season": "Spring",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Bottoms"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Green"
+      },
+      {
+        "color": "Beige"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/71/300/400",
+      "https://picsum.photos/id/122/300/400",
+      "https://picsum.photos/id/123/300/400",
+      "https://picsum.photos/id/124/300/400"
+    ]
+  },
+  {
+    "id": 9,
+    "product_name": "Cashmere Scarf",
+    "product_price": 1500,
+    "discount": 0,
+    "product_image": "https://picsum.photos/id/72/300/400",
+    "clothes_type": "Cashmere",
+    "season": "Winter",
+    "product_cat": [
+      {
+        "category_name": "Unisex"
+      },
+      {
+        "category_name": "Accessories"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Gray"
+      },
+      {
+        "color": "Red"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/72/300/400",
+      "https://picsum.photos/id/125/300/400",
+      "https://picsum.photos/id/126/300/400",
+      "https://picsum.photos/id/127/300/400"
+    ]
+  },
+  {
+    "id": 10,
+    "product_name": "Striped Polo Shirt",
+    "product_price": 1200,
+    "discount": 20,
+    "product_image": "https://picsum.photos/id/73/300/400",
+    "clothes_type": "Cotton",
+    "season": "Summer",
+    "product_cat": [
+      {
+        "category_name": "Men"
+      },
+      {
+        "category_name": "Tops"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Blue"
+      },
+      {
+        "color": "White"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/73/300/400",
+      "https://picsum.photos/id/128/300/400",
+      "https://picsum.photos/id/129/300/400",
+      "https://picsum.photos/id/130/300/400"
+    ]
+  },
+  {
+    "id": 11,
+    "product_name": "High-Waist Trousers",
+    "product_price": 2800,
+    "discount": 5,
+    "product_image": "https://picsum.photos/id/74/300/400",
+    "clothes_type": "Cotton Blend",
+    "season": "Autumn",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Bottoms"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Black"
+      },
+      {
+        "color": "Khaki"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/74/300/400",
+      "https://picsum.photos/id/131/300/400",
+      "https://picsum.photos/id/132/300/400",
+      "https://picsum.photos/id/133/300/400"
+    ]
+  },
+  {
+    "id": 12,
+    "product_name": "Velvet Blazer",
+    "product_price": 6500,
+    "discount": 0,
+    "product_image": "https://picsum.photos/id/75/300/400",
+    "clothes_type": "Velvet",
+    "season": "Winter",
+    "product_cat": [
+      {
+        "category_name": "Men"
+      },
+      {
+        "category_name": "Outerwear"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Navy"
+      },
+      {
+        "color": "Maroon"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/75/300/400",
+      "https://picsum.photos/id/134/300/400",
+      "https://picsum.photos/id/135/300/400",
+      "https://picsum.photos/id/136/300/400"
+    ]
+  },
+  {
+    "id": 13,
+    "product_name": "Boho Maxi Dress",
+    "product_price": 3200,
+    "discount": 10,
+    "product_image": "https://picsum.photos/id/76/300/400",
+    "clothes_type": "Rayon",
+    "season": "Summer",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Dresses"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Orange"
+      },
+      {
+        "color": "Pink"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/76/300/400",
+      "https://picsum.photos/id/137/300/400",
+      "https://picsum.photos/id/138/300/400",
+      "https://picsum.photos/id/139/300/400"
+    ]
+  },
+  {
+    "id": 14,
+    "product_name": "Cargo Pants",
+    "product_price": 2400,
+    "discount": 0,
+    "product_image": "https://picsum.photos/id/77/300/400",
+    "clothes_type": "Cotton",
+    "season": "All Season",
+    "product_cat": [
+      {
+        "category_name": "Men"
+      },
+      {
+        "category_name": "Bottoms"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Green"
+      },
+      {
+        "color": "Black"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/77/300/400",
+      "https://picsum.photos/id/140/300/400",
+      "https://picsum.photos/id/141/300/400",
+      "https://picsum.photos/id/142/300/400"
+    ]
+  },
+  {
+    "id": 15,
+    "product_name": "Turtleneck Sweater",
+    "product_price": 2600,
+    "discount": 15,
+    "product_image": "https://picsum.photos/id/78/300/400",
+    "clothes_type": "Wool",
+    "season": "Winter",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Tops"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "White"
+      },
+      {
+        "color": "Gray"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/78/300/400",
+      "https://picsum.photos/id/143/300/400",
+      "https://picsum.photos/id/144/300/400",
+      "https://picsum.photos/id/145/300/400"
+    ]
+  },
+  {
+    "id": 16,
+    "product_name": "Chino Shorts",
+    "product_price": 1400,
+    "discount": 10,
+    "product_image": "https://picsum.photos/id/79/300/400",
+    "clothes_type": "Cotton",
+    "season": "Summer",
+    "product_cat": [
+      {
+        "category_name": "Men"
+      },
+      {
+        "category_name": "Bottoms"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Beige"
+      },
+      {
+        "color": "Navy"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/79/300/400",
+      "https://picsum.photos/id/146/300/400",
+      "https://picsum.photos/id/147/300/400",
+      "https://picsum.photos/id/148/300/400"
+    ]
+  },
+  {
+    "id": 17,
+    "product_name": "Silk Blouse",
+    "product_price": 3800,
+    "discount": 5,
+    "product_image": "https://picsum.photos/id/80/300/400",
+    "clothes_type": "Silk",
+    "season": "Spring",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Tops"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Pink"
+      },
+      {
+        "color": "Cream"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/80/300/400",
+      "https://picsum.photos/id/149/300/400",
+      "https://picsum.photos/id/150/300/400",
+      "https://picsum.photos/id/151/300/400"
+    ]
+  },
+  {
+    "id": 18,
+    "product_name": "Puffer Jacket",
+    "product_price": 5500,
+    "discount": 20,
+    "product_image": "https://picsum.photos/id/81/300/400",
+    "clothes_type": "Nylon",
+    "season": "Winter",
+    "product_cat": [
+      {
+        "category_name": "Unisex"
+      },
+      {
+        "category_name": "Outerwear"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Yellow"
+      },
+      {
+        "color": "Black"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/81/300/400",
+      "https://picsum.photos/id/152/300/400",
+      "https://picsum.photos/id/153/300/400",
+      "https://picsum.photos/id/154/300/400"
+    ]
+  },
+  {
+    "id": 19,
+    "product_name": "Graphic T-Shirt",
+    "product_price": 900,
+    "discount": 0,
+    "product_image": "https://picsum.photos/id/82/300/400",
+    "clothes_type": "Cotton",
+    "season": "Summer",
+    "product_cat": [
+      {
+        "category_name": "Unisex"
+      },
+      {
+        "category_name": "Tops"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "White"
+      },
+      {
+        "color": "Black"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/82/300/400",
+      "https://picsum.photos/id/155/300/400",
+      "https://picsum.photos/id/156/300/400",
+      "https://picsum.photos/id/157/300/400"
+    ]
+  },
+  {
+    "id": 20,
+    "product_name": "Formal Slim Fit Suit",
+    "product_price": 15000,
+    "discount": 10,
+    "product_image": "https://picsum.photos/id/83/300/400",
+    "clothes_type": "Wool Blend",
+    "season": "All Season",
+    "product_cat": [
+      {
+        "category_name": "Men"
+      },
+      {
+        "category_name": "Suits"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Gray"
+      },
+      {
+        "color": "Black"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/83/300/400",
+      "https://picsum.photos/id/158/300/400",
+      "https://picsum.photos/id/159/300/400",
+      "https://picsum.photos/id/160/300/400"
+    ]
+  },
+  {
+    "id": 21,
+    "product_name": "Wrap Dress",
+    "product_price": 2900,
+    "discount": 5,
+    "product_image": "https://picsum.photos/id/84/300/400",
+    "clothes_type": "Viscose",
+    "season": "Spring",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Dresses"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Red"
+      },
+      {
+        "color": "Blue"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/84/300/400",
+      "https://picsum.photos/id/161/300/400",
+      "https://picsum.photos/id/162/300/400",
+      "https://picsum.photos/id/163/300/400"
+    ]
+  },
+  {
+    "id": 22,
+    "product_name": "Corduroy Jacket",
+    "product_price": 4200,
+    "discount": 15,
+    "product_image": "https://picsum.photos/id/85/300/400",
+    "clothes_type": "Corduroy",
+    "season": "Autumn",
+    "product_cat": [
+      {
+        "category_name": "Men"
+      },
+      {
+        "category_name": "Outerwear"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Brown"
+      },
+      {
+        "color": "Green"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/85/300/400",
+      "https://picsum.photos/id/164/300/400",
+      "https://picsum.photos/id/165/300/400",
+      "https://picsum.photos/id/166/300/400"
+    ]
+  },
+  {
+    "id": 23,
+    "product_name": "Athletic Leggings",
+    "product_price": 1800,
+    "discount": 0,
+    "product_image": "https://picsum.photos/id/87/300/400",
+    "clothes_type": "Spandex",
+    "season": "All Season",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Activewear"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Black"
+      },
+      {
+        "color": "Purple"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/86/300/400",
+      "https://picsum.photos/id/167/300/400",
+      "https://picsum.photos/id/168/300/400",
+      "https://picsum.photos/id/169/300/400"
+    ]
+  },
+  {
+    "id": 24,
+    "product_name": "Hoodie",
+    "product_price": 2100,
+    "discount": 10,
+    "product_image": "https://picsum.photos/id/88/300/400",
+    "clothes_type": "Fleece",
+    "season": "Autumn",
+    "product_cat": [
+      {
+        "category_name": "Unisex"
+      },
+      {
+        "category_name": "Tops"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Gray"
+      },
+      {
+        "color": "Black"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/87/300/400",
+      "https://picsum.photos/id/170/300/400",
+      "https://picsum.photos/id/171/300/400",
+      "https://picsum.photos/id/172/300/400"
+    ]
   }
 ]
