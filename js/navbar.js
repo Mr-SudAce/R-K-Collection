@@ -1,19 +1,17 @@
 // toggle menu for mobile view 
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        const menuToggle = document.getElementById('menuToggle');
+// Use event delegation to handle dynamically loaded navbar elements
+document.addEventListener('click', (e) => {
+    const menuToggle = e.target.closest('#menuToggle');
+    if (menuToggle) {
         const navLinks = document.getElementById('navLinks');
-
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
+        if (navLinks) {
+            navLinks.classList.toggle('active');
         }
-    }, 100);
-
-    // Handle hash-based navigation with smooth scroll
-    handleHashNavigation();
+    }
 });
+
+// Handle hash-based navigation with smooth scroll
+handleHashNavigation();
 
 // Handle navigation based on hash
 function handleHashNavigation() {
@@ -66,7 +64,7 @@ function renderWishlistDropdown() {
     const count = wishlist.length;
     
     // Main Link
-    const linkHTML = `<a href="#wishlist-section" class="wishlist-link" id="nav-wishlist-link">❤️ Wishlist ${count > 0 ? `(${count})` : ''}</a>`;
+    const linkHTML = `<a href="#wishlist-section" class="wishlist-link" id="nav-wishlist-link"> ❤️ Wishlist ${count > 0 ? `[${count}]` : ''}</a>`;
     
     // Dropdown Content
     let dropdownContent = '';

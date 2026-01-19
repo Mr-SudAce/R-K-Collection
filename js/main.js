@@ -33,7 +33,7 @@ function loadCSS(filename) {
 // content
 const file = [
     // common
-    { files: "common/navbar.html", id: "navbar", css: "navbar.css" },
+    { files: "common/navbar.html", id: "navbar", css: "navbar.css", js: "js/navbar.js" },
     { files: "common/footer.html", id: "footer" },
     { files: "common/header.html", id: "header" },
     // template
