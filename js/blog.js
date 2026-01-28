@@ -1,5 +1,5 @@
 function loadBlogData() {
-    fetch("json/blog.json")
+    fetch("Dashboard/json/blog.json")
         .then(response => response.json())
         .then(data => {
             const section = document.getElementById("blog-section");

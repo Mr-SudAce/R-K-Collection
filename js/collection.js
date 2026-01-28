@@ -1,7 +1,7 @@
 // let allProducts = [];
 
 // Fetch products and organize by season
-fetch("json/product.json")
+fetch("Dashboard/json/product.json")
     .then(res => res.json())
     .then(products => {
         allProducts = products;

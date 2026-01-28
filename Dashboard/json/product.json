@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "product_name": "Hello wassup guys here updated",
+    "product_price": 2500,
+    "brand": "Zara",
+    "discount": 10,
+    "product_image": "https://picsum.photos/id/64/300/400",
+    "clothes_type": "Cotton",
+    "season": "Summer",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Dresses"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Pink"
+      },
+      {
+        "color": "White"
+      }
+    ],
+    "related_productImage": [
+      "jhsdcvsx,sbdkjbsd"
+    ]
+  },
+  {
+    "id": 2,
+    "product_name": "Hello wassup guys here ",
+    "product_price": 2500,
+    "brand": "Zara",
+    "discount": 10,
+    "product_image": "https://picsum.photos/id/64/300/400",
+    "clothes_type": "fiber",
+    "season": "Summer",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Dresses"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Pink"
+      },
+      {
+        "color": "White"
+      }
+    ],
+    "related_productImage": [
+      "jhcvmbx c,shvdjchvsd"
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 let allPicture = [];
 
-fetch("json/product.json")
+fetch("Dashboard/json/product.json")
     .then(r => r.json())
     .then(picture => {
         pictureRender(picture);

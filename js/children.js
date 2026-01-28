@@ -1,5 +1,5 @@
 function loadChildrenData() {
-    fetch("json/children.json")
+    fetch("Dashboard/json/children.json")
         .then(response => response.json())
         .then(data => {
             const section = document.getElementById("children-section");

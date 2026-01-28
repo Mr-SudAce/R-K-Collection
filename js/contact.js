@@ -1,5 +1,5 @@
 function loadContactData() {
-    fetch("json/contact.json")
+    fetch("Dashboard/json/contact.json")
         .then(response => response.json())
         .then(data => {
             const section = document.getElementById("contact-section");

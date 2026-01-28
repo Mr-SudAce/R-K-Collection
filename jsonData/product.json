@@ -766,5 +766,34 @@
       "https://picsum.photos/id/171/300/400",
       "https://picsum.photos/id/172/300/400"
     ]
+  },
+  {
+    "id": 25,
+    "product_name": "Kurtha",
+    "product_price": 2500,
+    "brand": "Zara",
+    "discount": 15,
+    "product_image": "https://picsum.photos/id/64/1080/",
+    "clothes_type": "Cotton",
+    "season": "Summer",
+    "product_cat": [
+      {
+        "category_name": "Women"
+      },
+      {
+        "category_name": "Dresses"
+      }
+    ],
+    "color_verient": [
+      {
+        "color": "Pink"
+      },
+      {
+        "color": "White"
+      }
+    ],
+    "related_productImage": [
+      "https://picsum.photos/id/64/1080/, https://picsum.photos/id/264/1080/"
+    ]
   }
 ]

@@ -1,5 +1,5 @@
 function loadLookbooksData() {
-    fetch("json/lookbooks.json")
+    fetch("Dashboard/json/lookbooks.json")
         .then(response => response.json())
         .then(data => {
             const section = document.getElementById("lookbooks-section");

@@ -14,7 +14,7 @@ let filters = {
 };
 
 // Fetch JSON
-fetch("json/product.json")
+fetch("Dashboard/json/product.json")
     .then(res => res.json())
     .then(products => {
         allProducts = products;

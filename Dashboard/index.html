@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&K Collection Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <button id="saveToDirectoryBtn" onclick="showAlert()" >Save to Directory</button>
+
+
+    <h1>R&K Collection Product Dashboard</h1>
+    <button id="addProductBtn">Add New Product</button>
+    <button id="saveToJsonBtn">Update JSON File</button>
+    <table id="productsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Brand</th>
+                <th>Discount</th>
+                <th>Image URL</th>
+                <th>Clothes Type</th>
+                <th>Season</th>
+                <th>Categories</th>
+                <th>Colors</th>
+                <th>Related Images</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="productsTableBody">
+            <!-- Products will be loaded here -->
+        </tbody>
+    </table>
+
+
+
+    <!-- Modal for Add/Edit Product -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Add Product</h2>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <label for="productName">Name:</label>
+                <input type="text" id="productName" required>
+                <label for="productPrice">Price:</label>
+                <input type="number" id="productPrice" required>
+                <label for="brand">Brand:</label>
+                <input type="text" id="brand" required>
+                <label for="discount">Discount (%):</label>
+                <input type="number" id="discount" min="0" max="100" required>
+                <label for="productImage">Image URL:</label>
+                <input type="url" id="productImage" required>
+                <label for="clothesType">Clothes Type:</label>
+                <input type="text" id="clothesType" required>
+                <label for="season">Season:</label>
+                <input type="text" id="season" required>
+                <label for="categories">Categories (comma-separated):</label>
+                <input type="text" id="categories" required>
+                <label for="colors">Colors (comma-separated):</label>
+                <input type="text" id="colors" required>
+                <label for="relatedImages">Related Images (URLs, one per line):</label>
+                <textarea id="relatedImages" rows="4" required></textarea>
+                <button type="submit">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

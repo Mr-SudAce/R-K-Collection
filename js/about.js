@@ -1,5 +1,5 @@
 function loadAboutData() {
-    fetch("json/about.json")
+    fetch("Dashboard/json/about.json")
         .then(response => response.json())
         .then(data => {
             // Hero Section
