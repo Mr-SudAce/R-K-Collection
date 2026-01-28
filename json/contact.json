@@ -11,28 +11,40 @@
     {
       "icon": "📍",
       "title": "Visit Us",
-      "content": "123 Fashion Avenue, Design District, NY 10012",
-      "link": "https://maps.google.com"
+      "content": "Mandikhatar, Kathmandu",
+      "link": "https://maps.app.goo.gl/J33h78zoFDUrjh3y7"
     },
     {
       "icon": "📞",
       "title": "Call Us",
-      "content": "+1 (555) 123-4567",
-      "link": "tel:+15551234567"
+      "content": "9800917785, 9849427926",
+      "link": ""
     },
     {
       "icon": "✉️",
       "title": "Email Us",
-      "content": "hello@rkcollections.com",
-      "link": "mailto:hello@rkcollections.com"
+      "content": "r&kcollections@gmail.com",
+      "link": "mailto:r&kcollections@gmail.com"
     }
   ],
   "social": {
     "heading": "Follow Us",
     "links": [
-      { "icon": "📷", "url": "#", "alt": "Instagram" },
-      { "icon": "📘", "url": "#", "alt": "Facebook" },
-      { "icon": "🐦", "url": "#", "alt": "Twitter" }
+      {
+        "icon": "📷",
+        "url": "#",
+        "alt": "Instagram"
+      },
+      {
+        "icon": "📘",
+        "url": "#",
+        "alt": "Facebook"
+      },
+      {
+        "icon": "🐦",
+        "url": "#",
+        "alt": "Twitter"
+      }
     ]
   }
 }

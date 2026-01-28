@@ -24,14 +24,16 @@ function loadContactData() {
             const infoGrid = section.querySelector(".info-card-section");
             if (infoGrid) {
                 infoGrid.innerHTML = data.info_cards.map(card => `
-                    <div class="info-card">
-                        <span>${card.icon}</span>
-                        <div>
-                            <h4>${card.title}</h4>
-                            <a href="${card.link}">${card.content}</a>
+                    <a href="${card.link}">
+                        <div class="info-card">
+                            <span>${card.icon}</span>
+                                <div>
+                                    <h4>${card.title}</h4>
+                                    ${card.content}
+                                </div>
                         </div>
-                    </div>
-                `).join('');
+                    </a>
+                    `).join('');
             }
 
             // Social Links
