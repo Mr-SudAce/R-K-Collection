@@ -2,10 +2,9 @@
    CONTACT PAGE STYLES
 ========================= */
 
-/* HERO SECTION */
 /* CONTACT SECTION CONTAINER */
 .contact-section {
-    padding: 0 40px 80px; /* Top padding handled by margin-bottom of hero */
+    padding: 0 40px 80px;
     background-color: var(--bg-color);
     max-width: 1400px;
     margin: 0 auto;
@@ -62,33 +61,38 @@
 
 .info-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-color: var(--primary-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary);
     background: white;
 }
 
-.info-card span {
-    font-size: 2rem;
+/* CONTACT CARD ICON (BIGGER) */
+.info-card i {
+    font-size: 30px; /* Increased size */
     flex-shrink: 0;
     color: var(--primary-color);
     display: flex;
     align-items: center;
     padding-top: 5px;
+    transition: 0.3s ease;
 }
 
+/* CONTENT WRAPPER */
 .info-card > div {
     display: flex;
     flex-direction: column;
 }
 
+/* HEADING IN PRIMARY */
 .info-card h4 {
     font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: var(--text-color);
+    margin-bottom: 8px;
+    color: var(--primary);
     font-weight: 600;
 }
 
-.info-card p, 
+/* TEXT + LINKS */
+.info-card p,
 .info-card a {
     font-size: 0.95rem;
     color: #666;
@@ -98,51 +102,61 @@
 }
 
 .info-card a:hover {
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
-/* SOCIAL LINKS SECTION */
+/* =========================
+   SOCIAL LINKS SECTION
+========================= */
+
 .social-links {
     margin-top: 30px;
     padding-top: 40px;
     border-top: 1px solid var(--border-color);
     text-align: center;
-    align-items: center;
 }
 
 .social-links h3 {
     font-size: 1.5rem;
-    margin: 0;
+    margin-bottom: 0 !important;
     color: var(--text-color);
 }
 
+/* SOCIAL ICON WRAPPER */
 .social-icons {
     display: flex;
-    gap: 20px;
+    gap: 10px;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
 
+
+/* SOCIAL LINK BUTTON STYLE */
 .social-link {
-    display: inline-block;
-    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px; 
+    height: 55px;
+    border-radius: 50%;
+    color: var(--primary-color);
+    font-size: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 2px solid var(--primary);
 }
 
+/* HOVER COLOR SWAP */
+/* .social-link:hover {
+    color: white;
+    background: var(--primary-color)
+} */
 
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
 
-
-.social-link:hover {
-    transform: translateY(-5px) scale(1.1);
-}
-
-.social-link img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-}
-
-/* RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
     .info-card-section {
         grid-template-columns: 1fr 1fr;
@@ -193,7 +207,7 @@
         text-align: center;
     }
 
-    .info-card span {
+    .info-card i {
         align-self: center;
         padding-top: 0;
     }
@@ -202,8 +216,9 @@
         gap: 15px;
     }
 
-    .social-link img {
-        width: 35px;
-        height: 35px;
+    .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
     }
 }

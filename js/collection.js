@@ -1,156 +1,158 @@
-// let allProducts = [];
+// No global variable needed; it's handled properly inside async flow
+const loadProductData = async () => {
+    try {
+        const res = await fetch(Product_api_URL);
 
-// Fetch products and organize by season
-fetch("Dashboard/json/product.json")
-    .then(res => res.json())
-    .then(products => {
-        allProducts = products;
-        organizeBySeasons(allProducts);
-    })
-    .catch(err => {
-        console.log("JSON error:", err)
-    })
+        if (!res.ok) {
+            throw new Error("Failed to fetch product data");
+        }
 
-// Organize products by season
-function organizeBySeasons(products) {
+        const data = await res.json();
+        // Ensure we have an array
+        const allProducts = Array.isArray(data) ? data : (data.results || []);
+
+        // Organize and render AFTER data is ready
+        organizeByVariantSeason(allProducts);
+
+    } catch (err) {
+        console.error("Error loading product data:", err);
+    }
+};
+
+function organizeByVariantSeason(products) {
+
     const seasons = {
-        spring: [],
-        summer: [],
-        autumn: [],
-        winter: []
+        spring: new Map(),
+        summer: new Map(),
+        autumn: new Map(),
+        winter: new Map()
     };
 
-    // Categorize products by season
     products.forEach(product => {
-        // If product has season field, use it
-        if (product.season) {
-            const season = product.season.toLowerCase();
-            if (seasons[season]) {
-                seasons[season].push(product);
-            } else {
-                // Fallback: assign to spring if invalid season
-                seasons['spring'].push(product);
-            }
-        } else {
-            // Fallback: categorize based on clothes_type or colors
-            const season = categorizeByType(product);
-            seasons[season].push(product);
-        }
+
+        if (!product.variants || product.variants.length === 0) return;
+
+        product.variants.forEach(variant => {
+
+            if (!variant.seasons) return;
+
+            variant.seasons.split(",").forEach(s => {
+
+                const seasonName = s.trim().toLowerCase();
+
+                if (seasonName === "all season" || seasonName === "all seasons") {
+                    ["spring", "summer", "autumn", "winter"].forEach(key => {
+                        seasons[key].set(`${product.id}-${variant.id}`, {
+                            product,
+                            variant
+                        });
+                    });
+                }
+                else if (seasons[seasonName]) {
+                    seasons[seasonName].set(`${product.id}-${variant.id}`, {
+                        product,
+                        variant
+                    });
+                }
+
+            });
+
+        });
+
     });
 
     // Render each season
-    renderSeason('spring', seasons.spring);
-    renderSeason('summer', seasons.summer);
-    renderSeason('autumn', seasons.autumn);
-    renderSeason('winter', seasons.winter);
+    renderSeason("spring", Array.from(seasons.spring.values()));
+    renderSeason("summer", Array.from(seasons.summer.values()));
+    renderSeason("autumn", Array.from(seasons.autumn.values()));
+    renderSeason("winter", Array.from(seasons.winter.values()));
+
+    setupSliderControls();
 }
 
-// Fallback function to categorize by clothing type
-function categorizeByType(product) {
-    const type = product.clothes_type ? product.clothes_type.toLowerCase() : '';
+function renderSeason(season, items) {
 
-    // Spring: light fabrics
-    if (type.includes('cotton') || type.includes('linen')) {
-        return 'spring';
-    }
-    // Summer: very light fabrics
-    if (type.includes('silk') || type.includes('cotton')) {
-        return 'summer';
-    }
-    // Autumn: medium weight
-    if (type.includes('wool') || type.includes('linen')) {
-        return 'autumn';
-    }
-    // Winter: heavy fabrics
-    if (type.includes('velvet') || type.includes('wool')) {
-        return 'winter';
-    }
-
-    // Default distribution
-    return 'spring';
-}
-
-// Render products for a specific season
-function renderSeason(season, products) {
     const container = document.getElementById(`${season}Products`);
     if (!container) return;
 
+    const seasonSection = container.closest(".seasonal-collection");
+
     container.innerHTML = "";
 
-    if (products.length === 0) {
-        container.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #999;">
-                <p>Coming soon...</p>
-            </div>
-        `;
+    if (items.length === 0) {
+        if (seasonSection) {
+            seasonSection.style.display = "none";
+        }
         return;
     }
 
-    products.forEach(product => {
-        const card = document.createElement("div");
-        card.classList.add("collection-card");
+    if (seasonSection) {
+        seasonSection.style.display = "block";
+    }
 
-        const discountBadge = product.discount ? `<div class="discount_badge">-${product.discount}%</div>` : "";
-        const categoryNames = product.product_cat.map(cat => cat.category_name).join(", ");
-        const discountedPrice = product.discount
-            ? Math.round(product.product_price * (1 - product.discount / 100))
-            : product.product_price;
+    items.forEach(({ product, variant }) => {
+
+        const price = parseFloat(product.price);
+        const discountedPrice = product.discounted_price
+            ? parseFloat(product.discounted_price)
+            : price;
+
+        const card = document.createElement("div");
+        card.classList.add("cards");
+
+        const discountBadge = product.discount_percent > 0
+            ? `<div class="discount_badge">-${product.discount_percent}%</div>`
+            : "";
 
         card.innerHTML = `
-            <div class="card-inner">
+            <div class="cardbox">
                 ${discountBadge}
-                <img src="${product.product_image}" class="collection-product-image" alt="${product.product_name}">
-                <div class="card-overlay">
-                    <button class="btn btn-view view-details-btn">View Details</button>
-                    <button class="btn btn-cart">Add to Cart</button>
-                </div>
-            </div>
-            <div class="collection-product-info">
-                <h3 class="collection-product-name">${product.product_name}</h3>
-                <p class="collection-product-category">${categoryNames}</p>
-                <div class="price-section">
-                    ${product.discount ? `<span class="original-price">₹${product.product_price}</span>` : ''}
-                    <span class="product-price">₹${discountedPrice}</span>
-                </div>
-                <p class="collection-product-type">${product.clothes_type}</p>
-                <div class="color-swatches">
-                    ${product.color_verient ? product.color_verient.slice(0, 3).map(color =>
-            `<span class="color-swatch" style="background-color: ${getColorCode(color.color)};" title="${color.color}"></span>`
-        ).join('') : ''}
+                <img src="${product.image}" class="product_image" alt="${product.name}">
+                <div class="product-info">
+                    <p class="product_title">${product.name}</p>
+                    <p class="product_brand">${product.brand?.name || ""}</p>
+                    <button class="btn-add-cart btn view-btn" 
+                        ${variant.stock === 0 ? "disabled" : ""}>
+                        ${variant.stock === 0 ? "Out of Stock" : "View Details"}
+                    </button>
                 </div>
             </div>
         `;
 
-        // Add click event for details
-        const viewBtn = card.querySelector('.view-details-btn');
-        viewBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            showProductDetail(product);
-        });
+        if (variant.stock > 0) {
+            card.querySelector(".view-btn").addEventListener("click", () => {
+                if (typeof showProductDetail === "function") {
+                    showProductDetail(product, variant);
+                }
+            });
+        }
 
         container.appendChild(card);
     });
 }
 
-// Helper function to get color codes
-function getColorCode(colorName) {
-    const colorMap = {
-        'red': '#ff4444',
-        'blue': '#4444ff',
-        'green': '#44ff44',
-        'black': '#000000',
-        'white': '#ffffff',
-        'yellow': '#ffff00',
-        'pink': '#ff69b4',
-        'purple': '#9933ff',
-        'orange': '#ff8800',
-        'brown': '#8b4513',
-        'navy': '#001f3f',
-        'gray': '#888888',
-        'beige': '#f5f5dc',
-        'maroon': '#800000',
-        'gold': '#ffd700'
-    };
+function setupSliderControls() {
 
-    return colorMap[colorName.toLowerCase()] || '#cccccc';
+    document.querySelectorAll(".slide-btn").forEach(btn => {
+
+        btn.addEventListener("click", () => {
+
+            const season = btn.dataset.season;
+            const slider = document.getElementById(`${season}Products`);
+
+            if (!slider) return;
+
+            const direction = btn.classList.contains("prev") ? -1 : 1;
+
+            slider.scrollBy({
+                left: 300 * direction,
+                behavior: "smooth"
+            });
+
+        });
+
+    });
 }
+
+// Call async loader
+loadProductData();

@@ -4,20 +4,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/webp" href>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <title></title>
     </head>
     <body>
         <div class="container">
             <div id="header"></div>
-            <!-- <div id="imageSlider"></div> -->
             <div id="navbar"></div>
-            <!-- <div id="design"></div> -->
             <div id="productGrid"></div>
             <div id="collection-page"></div>
             <div id="blog-section"></div>
             <div id="contact-section"></div>
             <div id="about-section"></div>
-            <div id="lookbooks-section"></div>
             <div id="children-section"></div>
             <div id="footer"></div>
         </div>
@@ -25,9 +23,9 @@
         <script>
         // load css
         const cssFile = [
+            "/main.css",
             "/navbar.css",
             "/footer.css",
-            "/main.css",
             "/imageSlider.css",
             "/productGrid.css",
             "/design.css",
@@ -40,16 +38,15 @@
             link.href = "css" + file;
             document.head.appendChild(link);
         });
-        
     
         // load js
         const jsFile = [
-            "/navbar.js",
-            "/footer.js",
             "/main.js",
+            "/footer.js",
             "/imageSlider.js",
             "/header.js",
             "/contact.js",
+            "/children.js",
             "/productDetail.js"
         ];
         jsFile.forEach(file => {

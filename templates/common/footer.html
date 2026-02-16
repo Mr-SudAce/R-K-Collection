@@ -1,5 +1,5 @@
 <footer>
-    <div class="footer-section footer-logo">
+    <!-- <div class="footer-section footer-logo">
         <img src="images/rklogo.jpeg" alt="R & K Collection Logo" width="60" height="60">
         <h4>R & K Collection</h4>
         <p>Discover the perfect blend of tradition and modernity with our exclusive clothing collection.</p>
@@ -12,37 +12,47 @@
 
     <div class="footer-section">
         <h4>Quick Links</h4>
-        <a href="#collection">Collection</a>
-        <a href="#blog">Blog</a>
-        <a href="#children">Children</a>
-        <a href="#lookbooks">Lookbooks</a>
-        <a href="#aboutus">About Us</a>
-    </div>
+        <a href="#collection-page">Collection</a>
+        <a href="#blog-section">Blog</a>
+        <a href="#children-section">Children</a>
+        <a href="#lookbooks-section">Lookbooks</a>
+        <a href="#about-section">About Us</a>
+        <a href="#contact-section">Contact</a>
+    </div> -->
 
-    <div class="footer-section">
+    <!-- <div class="footer-section">
         <h4>Customer Service</h4>
         <a href="#faq">FAQ</a>
         <a href="#shipping">Shipping Info</a>
         <a href="#returns">Returns & Exchange</a>
         <a href="#privacy">Privacy Policy</a>
         <a href="#terms">Terms & Conditions</a>
-    </div>
+    </div> -->
 
-    <div class="footer-section">
+    <!-- <div class="footer-section">
         <h4>Newsletter</h4>
         <p>Subscribe to get special offers and updates!</p>
         <form class="newsletter-form">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Subscribe</button>
         </form>
-    </div>
+    </div> -->
 
     <div class="footer-bottom">
-        <p>&copy; 2024 R & K Collection. All rights reserved.</p>
-        <div class="footer-links">
+        <p id="yearElement"></p>
+        <!-- <div class="footer-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
-            <a href="#">Sitemap</a>
-        </div>
+            <a href="#contact-section">Sitemap</a>
+        </div> -->
     </div>
 </footer>
+
+<script>
+    const yearElement = document.getElementById("yearElement");
+
+    if (yearElement) {
+        const year = new Date().getFullYear();
+        yearElement.textContent = `© ${year} R & K Collection. All rights reserved.`;
+    }
+</script>

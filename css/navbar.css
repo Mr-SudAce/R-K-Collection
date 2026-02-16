@@ -65,6 +65,16 @@
     width: 100%;
 }
 
+
+.wishlist-view-btn {
+    color: white !important;
+}
+
+.wishlist-view-btn:hover {
+    color: var(--primary-color) !important;
+    background-color: #cc0000;
+}
+
 /* =========================
    DROPDOWN
 ========================= */
@@ -197,3 +207,5 @@
         padding: 10px 0 10px 30px;
     }
 }
+
+

@@ -6,7 +6,7 @@
 
 /* KIDS SECTION */
 .kids-section {
-    padding: 80px 40px;
+    padding: 40px 40px;
     background-color: white;
     max-width: 1400px;
     margin: 0 auto;
@@ -20,11 +20,18 @@
 
 .feature-card {
     background: var(--light-gray);
-    padding: 40px 30px;
+    padding: 10px;
     border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
 }
+
+.feature-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
 
 .feature-card:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -54,7 +61,7 @@
     padding: 60px 40px;
     background-color: var(--bg-color);
     max-width: 1400px;
-    margin: 80px auto 0;
+    margin: 10px auto 0;
 }
 
 .kids-showcase h2 {

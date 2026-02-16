@@ -1,70 +1,376 @@
+/* ================================
+   GLOBAL STATE
+================================ */
 let allProducts = [];
+let allVariant = [];
 let currentFilteredProducts = [];
+
 let currentPage = 1;
 const productsPerPage = 10;
 
 let filters = {
-    category: 'all',
-    clothesType: 'all',
+    category: "all",
+    brand: "all",
+    color: "all",
+    season: "all",
+    material: "all",
     minPrice: 0,
-    maxPrice: 10000,
-    color: 'all',
-    season: 'all',
-    brand: 'all'
+    maxPrice: 1000000
 };
 
-// Fetch JSON
-fetch("Dashboard/json/product.json")
-    .then(res => res.json())
-    .then(products => {
-        allProducts = products;
-        currentFilteredProducts = products;
+/* ================================
+   HELPERS
+================================ */
+function capitalize(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+/* ================================
+   FETCH DATA
+================================ */
+async function fetchProducts() {
+    try {
+        const [product_res, variant_res] = await Promise.all([
+            fetch(Product_api_URL),
+            fetch(Variant_api_URL)
+        ]);
+
+        allProducts = await product_res.json();
+        allVariant = await variant_res.json();
+
+        currentFilteredProducts = allProducts;
+
         generateCategoryButtons(allProducts);
-        generateClothesTypeFilters(allProducts);
-        generateColorFilters(allProducts);
-        generateSeasonFilters(allProducts);
         generateBrandFilters(allProducts);
+        generateColorFilters(allVariant);
+        generateSeasonFilters(allVariant);
+        generateMaterialFilters(allVariant);
+
         renderProducts(currentFilteredProducts);
-        setupEventListeners();
-    })
-    .catch(err => {
-        console.log("JSON error:", err)
-    })
+        setupPriceFilter();
+        setupResetButton();
 
-// Apply all filters
+    } catch (err) {
+        console.error("Fetch error:", err);
+    }
+}
+
+fetchProducts();
+
+/* ================================
+   CATEGORY FILTER
+================================ */
+function generateCategoryButtons(products) {
+    const container = document.getElementById("categoryFilter");
+    container.innerHTML = "";
+
+    const categoriesMap = new Map();
+    products.forEach(p => {
+        if (!p.category) return;
+        const id = p.category.id || p.category || p.category_id;
+        const name = p.category.name || p.category_name || (typeof p.category === 'string' ? p.category : `Category ${id}`);
+        if (id !== undefined && id !== null) {
+            categoriesMap.set(id, { id, name });
+        }
+    });
+    const categories = [...categoriesMap.values()];
+
+    // Dropdown for categories
+    const select = document.createElement("select");
+    select.className = "filter-dropdown";
+
+    select.innerHTML = `
+        <option value="all">All Categories</option>
+        ${categories
+            .map(cat => `<option value="${cat.id}">${cat.name}</option>`)
+            .join("")}
+    `;
+
+    select.addEventListener("change", e => {
+        filters.category = e.target.value;
+        applyFilters();
+    });
+
+    container.appendChild(select);
+}
+
+function setActiveButton(activeBtn) {
+    document
+        .querySelectorAll(".filter-btn")
+        .forEach(b => b.classList.remove("active"));
+    activeBtn.classList.add("active");
+}
+
+function updateActiveCategoryButton(categoryId) {
+    const btn = document.querySelector(
+        categoryId === "all"
+            ? `.filter-btn`
+            : `.filter-btn[data-id="${categoryId}"]`
+    );
+    if (btn) setActiveButton(btn);
+}
+
+/* ================================
+   BRAND FILTER
+================================ */
+function generateBrandFilters(products) {
+    const container = document.getElementById("brandFilter");
+    container.innerHTML = "";
+
+    const brands = [...new Set(
+        products
+            .filter(p => p.brand)
+            .map(p => p.brand.name.toLowerCase())
+    )];
+
+    const select = document.createElement("select");
+    select.className = "filter-dropdown";
+    select.innerHTML = `<option value="all">All Brands</option>`;
+
+    brands.forEach(brand => {
+        select.innerHTML += `<option value="${brand}">${capitalize(brand)}</option>`;
+    });
+
+    select.addEventListener("change", e => {
+        filters.brand = e.target.value;
+        applyFilters();
+    });
+
+    container.appendChild(select);
+}
+
+/* ================================
+   COLOR FILTER (FROM VARIANTS)
+================================ */
+function generateColorFilters(variants) {
+    const container = document.getElementById("colorFilter");
+    container.innerHTML = "";
+
+    const colors = [...new Set(
+        variants.map(v => v.color.toLowerCase())
+    )];
+
+    const select = document.createElement("select");
+    select.className = "filter-dropdown";
+    select.innerHTML = `<option value="all">All Colors</option>`;
+
+    colors.forEach(color => {
+        select.innerHTML += `<option value="${color}">${capitalize(color)}</option>`;
+    });
+
+    select.addEventListener("change", e => {
+        filters.color = e.target.value;
+        applyFilters();
+    });
+
+    container.appendChild(select);
+}
+
+/* ================================
+   SEASON FILTER (FROM VARIANTS)
+================================ */
+function generateSeasonFilters(variants) {
+    const container = document.getElementById("seasonFilter");
+    container.innerHTML = "";
+
+    const seasons = [...new Set(
+        variants.map(v => v.seasons.toLowerCase())
+    )];
+
+    const select = document.createElement("select");
+    select.className = "filter-dropdown";
+    select.innerHTML = `<option value="all">All Seasons</option>`;
+
+    seasons.forEach(season => {
+        select.innerHTML += `<option value="${season}">${capitalize(season)}</option>`;
+    });
+
+    select.addEventListener("change", e => {
+        filters.season = e.target.value;
+        applyFilters();
+    });
+
+    container.appendChild(select);
+}
+
+/* ================================
+   MATERIAL FILTER (FROM VARIANTS)
+================================ */
+function generateMaterialFilters(variants) {
+    const container = document.getElementById("materialFilter");
+    container.innerHTML = "";
+
+    const materials = [...new Set(
+        variants
+            .filter(v => v.material)
+            .map(v => v.material.toLowerCase())
+    )];
+
+    const select = document.createElement("select");
+    select.className = "filter-dropdown";
+    select.innerHTML = `<option value="all">All Materials</option>`;
+
+    materials.forEach(mat => {
+        select.innerHTML += `<option value="${mat}">${capitalize(mat)}</option>`;
+    });
+
+    select.addEventListener("change", e => {
+        filters.material = e.target.value;
+        applyFilters();
+    });
+
+    container.appendChild(select);
+}
+
+/* ================================
+   PRICE FILTER (Dual Slider + Input)
+================================ */
+function setupPriceFilter() {
+    const minInput = document.getElementById("minPrice");
+    const maxInput = document.getElementById("maxPrice");
+
+    // Sync inputs with current filter state
+    if (minInput) minInput.value = filters.minPrice;
+    if (maxInput) maxInput.value = filters.maxPrice;
+
+    // Create warning element
+    let warning = document.createElement("p");
+    warning.id = "price-warning";
+    warning.style.color = "red";
+    warning.style.fontSize = "0.85rem";
+    warning.style.marginTop = "2px";
+    minInput.parentElement.parentElement.appendChild(warning);
+
+    function checkAndApply() {
+        const minVal = Number(minInput.value) || 0;
+        const maxVal = Number(maxInput.value) || 0;
+
+        if (maxVal < minVal) {
+            warning.innerHTML = '<p style="margin:0; font-size:0.6rem; position:absolute;">⚠︎ Max price must be greater than Min price!</p>';
+        } else {
+            warning.innerHTML = "";
+        }
+
+        filters.minPrice = minVal;
+        filters.maxPrice = maxVal;
+        applyFilters();
+    }
+
+    minInput.addEventListener("input", checkAndApply);
+    maxInput.addEventListener("input", checkAndApply);
+}
+
+/* ================================
+   RESET FILTER BUTTON
+================================ */
+function setupResetButton() {
+    const resetBtn = document.getElementById('resetFilters');
+    if (!resetBtn) return;
+
+    resetBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Try to reset form if it exists
+        const filterForm = document.getElementById('filterForm');
+        if (filterForm) filterForm.reset();
+
+        // Reset all dropdowns
+        const selects = document.querySelectorAll('select.filter-dropdown');
+        selects.forEach(s => s.value = "all");
+
+        // Reset checkboxes
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(cb => cb.checked = false);
+
+        // Reset Price Inputs
+        const minInput = document.getElementById("minPrice");
+        const maxInput = document.getElementById("maxPrice");
+        if (minInput) minInput.value = 0;
+        if (maxInput) maxInput.value = 1000000;
+
+        // Clear Price Warning
+        const warning = document.getElementById("price-warning");
+        if (warning) warning.innerHTML = "";
+
+        // Reset Filter State
+        filters = {
+            category: "all",
+            brand: "all",
+            color: "all",
+            season: "all",
+            material: "all",
+            minPrice: 0,
+            maxPrice: 1000000
+        };
+
+        // Update active button UI
+        updateActiveCategoryButton("all");
+
+        currentFilteredProducts = allProducts;
+        currentPage = 1;
+        renderProducts(currentFilteredProducts);
+    });
+}
+
+
+
+/* ================================
+   APPLY FILTERS
+================================ */
 function applyFilters() {
-    let filtered = allProducts;
+    let filtered = [...allProducts];
 
-    // Filter by category
+    // Category
     if (filters.category !== 'all') {
-        filtered = filtered.filter(item =>
-            item.product_cat.some(cat => cat.category_name.toLowerCase() === filters.category)
-        );
+        filtered = filtered.filter(p => {
+            const catId = p.category?.id || p.category || p.category_id;
+            return catId == filters.category;
+        });
     }
 
-    // Filter by clothes type
-    if (filters.clothesType !== 'all') {
-        filtered = filtered.filter(item => item.clothes_type && item.clothes_type.toLowerCase() === filters.clothesType);
-    }
-
-    // Filter by price
-    filtered = filtered.filter(item => item.product_price >= filters.minPrice && item.product_price <= filters.maxPrice);
-
-    // Filter by color
-    if (filters.color !== 'all') {
-        filtered = filtered.filter(item =>
-            item.color_verient && item.color_verient.some(color => color.color.toLowerCase() === filters.color)
-        );
-    }
-
-    // Filter by season
-    if (filters.season !== 'all') {
-        filtered = filtered.filter(item => item.season && item.season.toLowerCase() === filters.season);
-    }
-
-    // Filter by brand
+    // Brand
     if (filters.brand !== 'all') {
-        filtered = filtered.filter(item => item.brand && item.brand.toLowerCase() === filters.brand);
+        filtered = filtered.filter(p => {
+            const brandName = p.brand?.name || p.brand || p.brand_name;
+            return brandName && String(brandName).toLowerCase() === filters.brand;
+        });
+    }
+
+    // Price filter using discounted price if available
+    filtered = filtered.filter(item => {
+        let rawPrice = item.discounted_price && item.discounted_price > 0
+            ? item.discounted_price
+            : (item.product_price || item.price);
+
+        // Strip non-numeric characters (keep digits and dot)
+        const cleanPrice = String(rawPrice).replace(/[^0-9.]/g, '');
+        const finalPrice = Number(cleanPrice) || 0;
+
+        return finalPrice >= Number(filters.minPrice) &&
+            finalPrice <= Number(filters.maxPrice);
+    });
+
+    // Helper to match variant to product (handles objects and IDs)
+    const variantMatchesProduct = (v, productId) => {
+        if (!productId) return false;
+        const vPid = v.product?.id || v.product || v.product_id;
+        return vPid == productId;
+    };
+
+    // Material (variant-based)
+    if (filters.material !== 'all') {
+        filtered = filtered.filter(product =>
+            allVariant.some(v => variantMatchesProduct(v, product.id || product.product_id) && v.material && v.material.toLowerCase() === filters.material));
+    }
+
+    // Color (variant-based)
+    if (filters.color !== 'all') {
+        filtered = filtered.filter(product => allVariant.some(v => variantMatchesProduct(v, product.id || product.product_id) && v.color && v.color.toLowerCase() === filters.color));
+    }
+
+    // Season (variant-based)
+    if (filters.season !== 'all') {
+        filtered = filtered.filter(product => allVariant.some(v => variantMatchesProduct(v, product.id || product.product_id) && v.seasons && v.seasons.toLowerCase() === filters.season));
     }
 
     currentFilteredProducts = filtered;
@@ -72,7 +378,11 @@ function applyFilters() {
     renderProducts(currentFilteredProducts);
 }
 
-// Render Products Function
+
+
+/* ================================
+   RENDER PRODUCTS
+================================ */
 function renderProducts(products) {
     const grid = document.getElementById("gridProduct");
     grid.innerHTML = "";
@@ -82,437 +392,50 @@ function renderProducts(products) {
     const paginatedProducts = products.slice(startIndex, endIndex);
 
     if (products.length === 0) {
-        grid.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 50px; color: #999;">
-                <p style="font-size: 1.1rem;">No products found matching your filters</p>
-            </div>
-        `;
-        renderPaginationControls(products);
+        grid.innerHTML = `<p style="text-align:center;">No products found</p>`;
         return;
     }
 
     paginatedProducts.forEach(item => {
         const card = document.createElement("div");
-        card.classList.add("cards");
+        card.className = "cards";
 
-        const discountBadge = item.discount ? `<div class="discount_badge">-${item.discount}%</div>` : "";
-        const categoryNames = item.product_cat.map(cat => cat.category_name).join(", ");
-        const isInWishlist = window.wishlist && window.wishlist.some(p => p.product_name === item.product_name);
-        const heartIcon = isInWishlist ? '❤️' : '♡';
+        const image = item.image;
 
+
+
+
+        // Pricing display: shows discounted price and original price
         card.innerHTML = `
-        <div class="cardbox">
-        ${discountBadge}
-        <img src="${item.product_image}" class="product_image" alt="${item.product_name}">
-        <div class="product-info">
-            <p class="product_title">${item.product_name}</p>
-            ${item.brand ? `<p class="product_brand">${item.brand}</p>` : ''}
-            <p class="product_category">${categoryNames}</p>
-            <p class="product_price">Rs.${item.product_price}</p>
-            <p class="product_detail">${item.clothes_type}</p>
-            <div class="product-actions">
-                <button class="btn-add-cart view-details-btn">View Details</button>
-                <button class="btn-wishlist">${heartIcon}</button>
-            </div>
-        </div>
-        </div>
-        `;
-        
-        // Add click event for details
-        const viewBtn = card.querySelector('.view-details-btn');
-        viewBtn.addEventListener('click', () => showProductDetail(item));
+            <div class="cardbox">
+            ${item.discount_percent > 0
+                ? `<div class="discount_badge">${item.discount_percent}%</div>`
+                : ""
+            }
+            <img src="${image}" class="product_image">
+            
+                <div class="product-info">
+                    <p class="product_title">${item.name}</p>
+                    <p class="product_brand">${item.brand?.name || ""}</p>
 
-        // Add click event for wishlist
-        const wishBtn = card.querySelector('.btn-wishlist');
-        wishBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            window.toggleWishlist(item);
-            const inList = window.wishlist.some(p => p.product_name === item.product_name);
-            wishBtn.textContent = inList ? '❤️' : '♡';
-        });
-        
+                    <p class="product_price">Rs. ${item.discounted_price}</p>
+                    <button class="btn-add-cart btn">View Details</button>
+                </div>
+            </div>
+            `;
+
+        // using a promps
+        card.onclick = () => {
+            showProductDetail(item);
+        };
+
         grid.appendChild(card);
     });
-    
-    renderPaginationControls(products);
 }
 
-// Render Pagination Controls
-function renderPaginationControls(products) {
-    const totalProducts = products.length;
-    const totalPages = Math.ceil(totalProducts / productsPerPage);
-
-    let paginationContainer = document.getElementById("pagination-container");
-    if (!paginationContainer) {
-        paginationContainer = document.createElement('div');
-        paginationContainer.id = "pagination-container";
-        paginationContainer.className = "pagination-controls";
-        const grid = document.getElementById("gridProduct");
-        if (grid) {
-            grid.insertAdjacentElement('afterend', paginationContainer);
-        }
-    }
-
-    paginationContainer.innerHTML = "";
-
-    if (totalPages <= 1) {
-        return;
-    }
-
-    // Previous Button
-    const prevButton = document.createElement('button');
-    prevButton.textContent = '« Previous';
-    prevButton.className = 'pagination-btn';
-    if (currentPage === 1) prevButton.disabled = true;
-    prevButton.addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            renderProducts(products);
-        }
-    });
-    paginationContainer.appendChild(prevButton);
-
-    // Page Number Buttons (Advanced)
-    const pageNeighbours = 1; // Pages to show on each side of the current page
-
-    const createPageButton = (page) => {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = page;
-        pageButton.className = 'pagination-btn';
-        if (page === currentPage) pageButton.classList.add('active');
-        pageButton.addEventListener('click', () => {
-            currentPage = page;
-            renderProducts(products);
-        });
-        paginationContainer.appendChild(pageButton);
-    };
-
-    const createEllipsis = () => {
-        const ellipsis = document.createElement('span');
-        ellipsis.textContent = '...';
-        ellipsis.className = 'pagination-ellipsis';
-        paginationContainer.appendChild(ellipsis);
-    };
-
-    // Logic for which pages to show
-    if (totalPages <= (pageNeighbours * 2) + 5) { // If not many pages, show all
-        for (let i = 1; i <= totalPages; i++) {
-            createPageButton(i);
-        }
-    } else {
-        // Show first page
-        createPageButton(1);
-
-        if (currentPage > pageNeighbours + 2) {
-            createEllipsis();
-        }
-
-        const startPage = Math.max(2, currentPage - pageNeighbours);
-        const endPage = Math.min(totalPages - 1, currentPage + pageNeighbours);
-        for (let i = startPage; i <= endPage; i++) {
-            createPageButton(i);
-        }
-
-        if (currentPage < totalPages - pageNeighbours - 1) {
-            createEllipsis();
-        }
-
-        // Show last page
-        createPageButton(totalPages);
-    }
-
-    // Next Button
-    const nextButton = document.createElement('button');
-    nextButton.textContent = 'Next »';
-    nextButton.className = 'pagination-btn';
-    if (currentPage === totalPages) nextButton.disabled = true;
-    nextButton.addEventListener('click', () => {
-        if (currentPage < totalPages) {
-            currentPage++;
-            renderProducts(products);
-        }
-    });
-    paginationContainer.appendChild(nextButton);
-}
-
-// Generate Category Dropdown
-function generateCategoryButtons(products) {
-    const categoryContainer = document.getElementById("categoryFilter");
-    if (!categoryContainer) return;
-    categoryContainer.innerHTML = "";
-
-    // Get unique categories
-    const categoriesSet = new Set();
-    products.forEach(item => {
-        item.product_cat.forEach(cat => categoriesSet.add(cat.category_name.toLowerCase()));
-    });
-    const categories = Array.from(categoriesSet).sort();
-
-    // Create Select
-    const select = document.createElement("select");
-    select.className = "filter-dropdown";
-    
-    // All Option
-    const allOption = document.createElement("option");
-    allOption.value = "all";
-    allOption.textContent = "All Categories";
-    select.appendChild(allOption);
-
-    // Category Options
-    categories.forEach(catName => {
-        const count = products.filter(item =>
-            item.product_cat.some(cat => cat.category_name.toLowerCase() === catName)
-        ).length;
-        const option = document.createElement("option");
-        option.value = catName;
-        option.textContent = `${capitalize(catName)} (${count})`;
-        select.appendChild(option);
-    });
-
-    select.addEventListener("change", (e) => {
-        filters.category = e.target.value;
-        applyFilters();
-    });
-
-    categoryContainer.appendChild(select);
-}
-
-// Generate Clothes Type Dropdown
-function generateClothesTypeFilters(products) {
-    const typeContainer = document.getElementById("clothesTypeFilter");
-    if (!typeContainer) return;
-    typeContainer.innerHTML = "";
-
-    // Get unique types
-    const typesSet = new Set();
-    products.forEach(item => {
-        if (item.clothes_type) {
-            typesSet.add(item.clothes_type.toLowerCase());
-        }
-    });
-    const types = Array.from(typesSet).sort();
-
-    // Create Select
-    const select = document.createElement("select");
-    select.className = "filter-dropdown";
-    
-    // All Option
-    const allOption = document.createElement("option");
-    allOption.value = "all";
-    allOption.textContent = "All Types";
-    select.appendChild(allOption);
-
-    // Type Options
-    types.forEach(typeName => {
-        const option = document.createElement("option");
-        option.value = typeName;
-        option.textContent = capitalize(typeName);
-        select.appendChild(option);
-    });
-
-    select.addEventListener("change", (e) => {
-        filters.clothesType = e.target.value;
-        applyFilters();
-    });
-
-    typeContainer.appendChild(select);
-}
-
-// Generate Season Dropdown
-function generateSeasonFilters(products) {
-    const seasonContainer = document.getElementById("seasonFilter");
-    seasonContainer.innerHTML = "";
-
-    // Get unique seasons
-    const seasonsSet = new Set();
-    products.forEach(item => {
-        if (item.season) {
-            seasonsSet.add(item.season.toLowerCase());
-        }
-    });
-    const seasons = Array.from(seasonsSet).sort();
-
-    // Create Select
-    const select = document.createElement("select");
-    select.className = "filter-dropdown";
-
-    // All Option
-    const allOption = document.createElement("option");
-    allOption.value = "all";
-    allOption.textContent = "All Seasons";
-    select.appendChild(allOption);
-
-    // Season Options
-    seasons.forEach(seasonName => {
-        const option = document.createElement("option");
-        option.value = seasonName;
-        option.textContent = capitalize(seasonName);
-        select.appendChild(option);
-    });
-
-    select.addEventListener("change", (e) => {
-        filters.season = e.target.value;
-        applyFilters();
-    });
-
-    seasonContainer.appendChild(select);
-}
-
-// Generate Color Dropdown
-function generateColorFilters(products) {
-    const colorContainer = document.getElementById("colorFilter");
-    colorContainer.innerHTML = "";
-
-    // Get unique colors
-    const colorsSet = new Set();
-    products.forEach(item => {
-        if (item.color_verient) {
-            item.color_verient.forEach(color => {
-                colorsSet.add(color.color.toLowerCase());
-            });
-        }
-    });
-    const colors = Array.from(colorsSet).sort();
-
-    // Create Select
-    const select = document.createElement("select");
-    select.className = "filter-dropdown";
-
-    // All Option
-    const allOption = document.createElement("option");
-    allOption.value = "all";
-    allOption.textContent = "All Colors";
-    select.appendChild(allOption);
-
-    // Color Options
-    colors.forEach(colorName => {
-        const option = document.createElement("option");
-        option.value = colorName;
-        option.textContent = capitalize(colorName);
-        select.appendChild(option);
-    });
-
-    select.addEventListener("change", (e) => {
-        filters.color = e.target.value;
-        applyFilters();
-    });
-
-    colorContainer.appendChild(select);
-}
-
-// Generate Brand Dropdown
-function generateBrandFilters(products) {
-    const brandContainer = document.getElementById("brandFilter");
-    if (!brandContainer) return;
-    brandContainer.innerHTML = "";
-
-    // Get unique brands
-    const brandsSet = new Set();
-    products.forEach(item => {
-        if (item.brand) {
-            brandsSet.add(item.brand.toLowerCase());
-        }
-    });
-    const brands = Array.from(brandsSet).sort();
-
-    const select = document.createElement("select");
-    select.className = "filter-dropdown";
-
-    const allOption = document.createElement("option");
-    allOption.value = "all";
-    allOption.textContent = "All Brands";
-    select.appendChild(allOption);
-
-    brands.forEach(brandName => {
-        const option = document.createElement("option");
-        option.value = brandName;
-        option.textContent = capitalize(brandName);
-        select.appendChild(option);
-    });
-
-    select.addEventListener("change", (e) => {
-        filters.brand = e.target.value;
-        applyFilters();
-    });
-
-    brandContainer.appendChild(select);
-}
-
-// Setup Event Listeners
-function setupEventListeners() {
-    // Price range slider
-    const priceSlider = document.getElementById("priceRange");
-    const minPriceInput = document.getElementById("minPrice");
-    const maxPriceInput = document.getElementById("maxPrice");
-
-    function updatePrices() {
-        filters.minPrice = Number(minPriceInput.value) || 0;
-        filters.maxPrice = Number(maxPriceInput.value) || 10000;
-        applyFilters();
-    }
-
-    if (minPriceInput) minPriceInput.addEventListener("input", updatePrices);
-
-    if (maxPriceInput) {
-        maxPriceInput.addEventListener("input", () => {
-            if (priceSlider) priceSlider.value = maxPriceInput.value;
-            updatePrices();
-        });
-    }
-
-    if (priceSlider && maxPriceInput) {
-        priceSlider.addEventListener("input", (e) => {
-            maxPriceInput.value = e.target.value;
-            updatePrices();
-        });
-    }
-
-    // Reset filters button
-    const resetBtn = document.getElementById("resetFilters");
-    if (resetBtn) {
-        resetBtn.addEventListener("click", () => {
-            filters = {
-                category: 'all',
-                clothesType: 'all',
-                minPrice: 0,
-                maxPrice: 10000,
-                color: 'all',
-                season: 'all',
-                brand: 'all'
-            };
-            currentPage = 1;
-            currentFilteredProducts = allProducts;
-            
-            if (minPriceInput) minPriceInput.value = 0;
-            if (maxPriceInput) maxPriceInput.value = 10000;
-            if (priceSlider) priceSlider.value = 10000;
-
-            // Reset category select
-            const categorySelect = document.querySelector("#categoryFilter select");
-            if(categorySelect) categorySelect.value = 'all';
-
-            // Reset clothes type select
-            const typeSelect = document.querySelector("#clothesTypeFilter select");
-            if(typeSelect) typeSelect.value = 'all';
-
-            // Reset color select
-            const colorSelect = document.querySelector("#colorFilter select");
-            if(colorSelect) colorSelect.value = 'all';
-
-            // Reset season select
-            const seasonSelect = document.querySelector("#seasonFilter select");
-            if(seasonSelect) seasonSelect.value = 'all';
-
-            // Reset brand select
-            const brandSelect = document.querySelector("#brandFilter select");
-            if(brandSelect) brandSelect.value = 'all';
-
-            renderProducts(currentFilteredProducts);
-        });
-    }
-}
-
-// Helper function to capitalize
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
+/* ================================
+   INIT
+================================ */
+document.addEventListener("DOMContentLoaded", () => {
+    fetchProducts();
+});

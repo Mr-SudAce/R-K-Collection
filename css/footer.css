@@ -5,7 +5,8 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
-    padding: 50px 40px;
+    /* padding: 50px 40px; */
+    padding: 15px 40px;
     background-color: var(--footer-color);
     color: white;
 }
@@ -67,15 +68,17 @@ footer h4 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    padding: 5px;
+    height: 20px;
     border-radius: 50%;
     transition: all 0.3s ease;
 }
 
 .social-links a:hover {
+    color: white;
     background-color: var(--hover-color);
-    transform: translateY(-3px);
+    /* transform: translateY(-3px); */
 }
 
 /* Newsletter Subscription */
@@ -122,10 +125,11 @@ footer h4 {
 /* Footer Bottom */
 .footer-bottom {
     grid-column: 1 / -1;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 30px;
+    /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
+    /* padding-top: 30px; */
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;

@@ -6,6 +6,9 @@
     background-color: var(--bg-color);
 }
 
+.modal-discount{
+    font-size: 0.9em;
+}
 /* =========================
    PRODUCT SECTION WRAPPER
 ========================= */
@@ -142,12 +145,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
 }
 
 .price-inputs input {
     width: 100%;
-    padding: 6px;
+    font-size: 0.95rem;
+    padding: 11px 15px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
 }
@@ -234,14 +237,14 @@
 .cardbox:hover,
 .cards:hover {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-    transform: translateY(-5px);
+    /* transform: translateY(-5px); */
 }
 
 /* Product Image */
 .product_image {
     width: 100%;
     height: 220px;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.3s ease;
 }
 
@@ -292,6 +295,15 @@
     color: var(--primary-color);
     margin-bottom: 4px;
 }
+.original-price {
+    font-size: 0.9rem;
+    color: #999;
+    margin-left: 8px;
+}
+
+.input-danger {
+    border: 2px solid red;
+}
 
 .product_detail {
     font-size: 0.85rem;
@@ -340,7 +352,6 @@
 .btn-add-cart {
     background-color: var(--primary-color);
     color: white;
-    flex: 3;
 }
 
 .btn-add-cart:hover {
